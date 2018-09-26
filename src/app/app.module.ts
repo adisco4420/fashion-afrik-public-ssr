@@ -15,8 +15,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { Globals } from './shared/api';
 
 import { AppComponent } from './app.component';
-import { AboutComponent } from './components/about/about.component';
-import { HomeComponent } from './components/home/home.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -28,8 +26,6 @@ import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
     declarations: [
         AppComponent,
-        AboutComponent,
-        HomeComponent,
         LandingComponent,
         FooterComponent
     ],
