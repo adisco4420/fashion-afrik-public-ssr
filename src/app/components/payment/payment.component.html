@@ -1,0 +1,103 @@
+<section class="padded">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-5 card">
+                <div class="card-header">
+                    <h3>Pay Invoice</h3>
+                </div>
+                <div class="card-body">
+                    <div class="notif-container" *ngIf="errMessage">
+                        <span>{{errMessage}}</span>
+                    </div>
+                    <div class="img-container">
+                        <img src="assets/img/payOptions.png" alt="">
+                    </div>
+                    <form (ngSubmit)="pay($event)" #paymentForm="ngForm">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="cardnumber">Card number</label>
+                                <input type="text" placeholder="1234-1234-1234-1234" [(ngModel)]="cardnumber" [textMask]="{mask: masks.cardNumber}" #pay_cardnumber="ngModel" name="pay_cardnumber" data-stripe="number" (keypress)="numbersOnly($event)" required>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="cardmonth">Card month</label>
+                                <input type="text" placeholder="MM" [(ngModel)]="cardmonth" [textMask]="{mask: masks.cardMonth}" name="cardmonth" data-stripe="exp_month" (keypress)="numbersOnly($event)" required>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="cardyear">Card year</label>
+                                <input type="text" placeholder="YY" [(ngModel)]="cardyear" [textMask]="{mask: masks.cardYear}" name="cardyear" data-stripe="exp_year" (keypress)="numbersOnly($event)" required>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="cardcvv">CVV</label>
+                                <input type="text" placeholder="CVV" [(ngModel)]="cardcvv" [textMask]="{mask: masks.cardCVV}" name="cardcvv" data-stripe="cvc" (keypress)="numbersOnly($event)" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <button [ngClass]="{'disabled': !paymentForm.form.valid}">
+                                    {{currency}}&nbsp;{{amount | number : '1.2'}}
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-5 card">
+                <div class="card-header">
+                    <h3>Order Summary</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row" *ngFor="let c of cart">
+                        <div class="col-lg-8">
+                            <p class="ptext">{{c.product_name}}</p>
+                        </div>
+                        <div class="col-lg-1">
+                            <p class="ptext">{{c.qty}}</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p class="ptext">{{currency}}&nbsp;{{c.sale_price}}</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <p class="otext">Subtotal</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p class="otext">{{currency}}&nbsp;{{sub_total}}.00</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <p class="otext">Discount</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p class="otext">{{currency}}&nbsp;0.00</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <p class="otext">Shipping Cost</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p class="otext">{{currency}}&nbsp;{{shipping_cost}}.00</p>
+                        </div>
+                        <hr style="border-color: rgba(1, 25, 54, 0.6); opacity: .7;">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <p class="otext">Total Cost</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p class="otext">{{currency}}&nbsp;{{amount}}.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

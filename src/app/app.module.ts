@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from './shared/shared.module';
 // custom modules
@@ -18,6 +19,15 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { ShippingComponent } from './components/shipping/shipping.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+
+
+
 
 
 
@@ -30,12 +40,20 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
         LandingComponent,
         FooterComponent,
         ShoppingCartComponent,
+        CheckoutComponent,
+        SearchResultsComponent,
+        ConfirmationComponent,
+        ShippingComponent,
+        PaymentComponent,
+        NotFoundPageComponent,
     ],
     imports: [
         CommonModule,
         AppRoutingModule,
         HttpClientModule,
         HttpModule,
+        FormsModule,
+        ReactiveFormsModule,
         SharedModule,
         MomentModule,
         TextMaskModule,
