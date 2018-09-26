@@ -24,7 +24,12 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { StoreDetailComponent } from './components/store-detail/store-detail.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+
+
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+
 
 
 
@@ -45,6 +50,8 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
         ConfirmationComponent,
         ShippingComponent,
         PaymentComponent,
+        StoreDetailComponent,
+        WishlistComponent,
         NotFoundPageComponent,
     ],
     imports: [

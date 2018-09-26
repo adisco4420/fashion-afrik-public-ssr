@@ -6,12 +6,14 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { StoreDetailComponent } from './components/store-detail/store-detail.component';
 
 const routes: Routes = [
     { path: '', component: LandingComponent },
     { path: 'cart', component: ShoppingCartComponent },
     { path: 'checkout', component: CheckoutComponent },
     { path: 'search', component: SearchResultsComponent },
+    { path: 'store/:store', component: StoreDetailComponent },
 
 
     { path: '', loadChildren: './components/Misc/misc.module#MiscModule'},
