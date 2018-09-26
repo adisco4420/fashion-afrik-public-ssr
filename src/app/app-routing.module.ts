@@ -8,6 +8,8 @@ const routes: Routes = [
     { path: '', component: LandingComponent },
     { path: 'cart', component: ShoppingCartComponent },
     { path: '', loadChildren: './components/Misc/misc.module#MiscModule'},
+    { path: '', loadChildren: './components/User/user.module#UserModule'},
+    { path: '', loadChildren: './components/Catergory/Catergory.module#CatergorysModule' },
 
     { path: '**', redirectTo: '/' },
 ];
