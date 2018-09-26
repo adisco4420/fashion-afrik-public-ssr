@@ -13,10 +13,11 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { AppRoutingModule } from './app-routing.module';
 // api
 import { Globals } from './shared/api';
-
+// components
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 
@@ -27,7 +28,8 @@ import { FooterComponent } from './components/footer/footer.component';
     declarations: [
         AppComponent,
         LandingComponent,
-        FooterComponent
+        FooterComponent,
+        ShoppingCartComponent,
     ],
     imports: [
         CommonModule,
