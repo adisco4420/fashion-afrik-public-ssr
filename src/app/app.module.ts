@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 
+import { SharedModule } from './shared/shared.module';
 // custom modules
 import { MomentModule } from 'angular2-moment';
 import { TextMaskModule } from 'angular2-text-mask';
@@ -23,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -36,6 +38,7 @@ import { FooterComponent } from './components/footer/footer.component';
         AppRoutingModule,
         HttpClientModule,
         HttpModule,
+        SharedModule,
         MomentModule,
         TextMaskModule,
         // EcomProductZoomModalModule,

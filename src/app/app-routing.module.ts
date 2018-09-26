@@ -9,6 +9,8 @@ const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'land', component: LandingComponent },
+    { path: '', loadChildren: './components/Misc/misc.module#MiscModule'},
+
     { path: '**', redirectTo: '/' },
 ];
 
