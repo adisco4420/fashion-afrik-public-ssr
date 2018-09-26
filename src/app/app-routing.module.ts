@@ -19,6 +19,7 @@ const routes: Routes = [
     { path: '', loadChildren: './components/Misc/misc.module#MiscModule'},
     { path: '', loadChildren: './components/User/user.module#UserModule'},
     { path: '', loadChildren: './components/Catergory/Catergory.module#CatergorysModule' },
+    { path: '', loadChildren: './components/Products/products.module#ProductsModule'},
 
     { path: 'not-found' , component: NotFoundPageComponent},
     { path: '**', redirectTo: '/not-found', pathMatch: 'full'},
