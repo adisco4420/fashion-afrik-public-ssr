@@ -221,7 +221,8 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
     this.currencySrv.fetchCurrencys().subscribe(
       res => {
-        this.currencys = res.results;
+      //  console.log(res.data);
+        this.currencys = res.data;
         // console.log(this.currencys);
       }, err => {
         console.log(err);

@@ -43,6 +43,8 @@ export class CategoryDetailComponent implements OnInit {
         res => {
 
           this.products = res.results;
+          console.log(this.products);
+
           this.productType = t.snapshot.params['productType'];
           this.category = t.snapshot.params['category'];
           this.sub = t.snapshot.params['sub'];
@@ -54,20 +56,20 @@ export class CategoryDetailComponent implements OnInit {
 
     this.fetchCategories();
 
-    $(".range-slider").ionRangeSlider({
-      'type': 'double',
-      onStart: function (data) {
-        // console.log("onStart");
-      },
-      onChange: function (data) {
-        // console.log("onChange");
+    // $(".range-slider").ionRangeSlider({
+    //   'type': 'double',
+    //   onStart: function (data) {
+    //     // console.log("onStart");
+    //   },
+    //   onChange: function (data) {
+    //     // console.log("onChange");
 
 
-        productFilter['minPrice'] = data['from'];
-        productFilter['maxPrice'] = data['to'];
+    //     productFilter['minPrice'] = data['from'];
+    //     productFilter['maxPrice'] = data['to'];
 
-      }
-    });
+    //   }
+    // });
 
     $('.filter-btn').click(function (e) {
       e.preventDefault();

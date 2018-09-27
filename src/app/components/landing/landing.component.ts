@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { Title, Meta, TransferState, makeStateKey } from '@angular/platform-browser';
 
 import { ProductService } from '../../services/product.service';
 import { NewArrivalsService } from '../../services/new-arrivals.service';
@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs/RX';
 
 
 
+const STATE_KEY_NEWARRIVALS = makeStateKey('newArrival');
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -14,19 +15,23 @@ import { Subscription } from 'rxjs/RX';
   providers: [ ProductService, NewArrivalsService]
 })
 export class LandingComponent implements OnInit , OnDestroy{
+
   newArrivals: any[];
   hers: any[];
   his: any[];
+  cun: any;
   error: any;
   menClean: Subscription;
   womenClean: Subscription;
-  arrivalClean: Subscription
+  arrivalClean: Subscription;
 
   constructor(
     private productSrv: ProductService,
     private newArrivalSrv: NewArrivalsService,
     private title: Title,
-    private meta: Meta ) { }
+    private meta: Meta ,
+    private state: TransferState
+        ) { }
 
   ngOnInit() {
     this.title.setTitle('Home / VogueAfriq');
@@ -36,9 +41,11 @@ export class LandingComponent implements OnInit , OnDestroy{
     this.fetchWomen();
     this.fetchMen();
     this.fetchNewArrivals();
+    this.cun = 'USD';
   }
 
   fetchNewArrivals() {
+    this.arrivalClean = this.state.get(STATE_KEY_NEWARRIVALS, <any>[]);
    this.arrivalClean = this.newArrivalSrv.fetchNewArrivals()
     .subscribe(res => {
       this.newArrivals = res.results;
