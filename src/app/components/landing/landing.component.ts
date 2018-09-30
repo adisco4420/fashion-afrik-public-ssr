@@ -55,7 +55,6 @@ export class LandingComponent implements OnInit , OnDestroy{
     })
   }
 
-
   fetchWomen() {
    this.womenClean =  this.productSrv.fetchHer()
     .subscribe(res => {
