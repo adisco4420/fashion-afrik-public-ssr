@@ -4,7 +4,8 @@ import { Globals } from '../../../shared/api';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+
 
 @Injectable()
 export class ProductService {

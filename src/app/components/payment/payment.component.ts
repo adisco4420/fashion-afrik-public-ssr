@@ -73,7 +73,7 @@ export class PaymentComponent implements OnInit {
     console.log(this.cart);
   }
 
-  pay() {
+  pay(e) {
 
     (<any>window).Stripe.card.createToken({
       number: this.cardnumber.replace(/\D+/g, ''),

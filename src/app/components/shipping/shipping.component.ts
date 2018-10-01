@@ -85,7 +85,7 @@ export class ShippingComponent implements OnInit {
 
   loadCountries() {
     this.countrySrv.fetchCountrys().subscribe(res => {
-      this.countrys = res.results;
+      this.countrys = res.data;
       // console.log(this.countrys);
     }, err => {
       console.log(err);
