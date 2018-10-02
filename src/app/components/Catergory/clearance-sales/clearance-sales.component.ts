@@ -44,7 +44,9 @@ export class ClearanceSalesComponent implements OnInit {
       this.productSrv.fetchClearance(params['category'], params['productType'], params['sub']))
       .subscribe(
         data => {
-          this.sales = data;
+          this.sales = data.results;
+          console.log(this.sales);
+          
           this.category = t.snapshot.params['category'];
           this.productType = t.snapshot.params['productType'];
           this.sub = t.snapshot.params['sub'];
@@ -137,7 +139,7 @@ export class ClearanceSalesComponent implements OnInit {
       this.productSrv.fetchClearance(params['category'], params['productType'], params['sub'], this.theFilter))
       .subscribe(
         res => {
-          this.products = res;
+          this.products = res.results;
           console.log(this.products);
         }, err => {
           console.log(err);
@@ -147,7 +149,7 @@ export class ClearanceSalesComponent implements OnInit {
   fetchProductTypes(pt) {
     this.productTypeSrv.fetchProductTypes(pt).subscribe(
       data => {
-        this.productTypes = data;
+        this.productTypes = data.results;
       }, err => {
         console.log(err);
       });

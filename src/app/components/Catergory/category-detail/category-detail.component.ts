@@ -56,20 +56,20 @@ export class CategoryDetailComponent implements OnInit {
 
     this.fetchCategories();
 
-    // $(".range-slider").ionRangeSlider({
-    //   'type': 'double',
-    //   onStart: function (data) {
-    //     // console.log("onStart");
-    //   },
-    //   onChange: function (data) {
-    //     // console.log("onChange");
+    $(".range-slider").ionRangeSlider({
+      'type': 'double',
+      onStart: function (data) {
+        // console.log("onStart");
+      },
+      onChange: function (data) {
+        // console.log("onChange");
 
 
-    //     productFilter['minPrice'] = data['from'];
-    //     productFilter['maxPrice'] = data['to'];
+        productFilter['minPrice'] = data['from'];
+        productFilter['maxPrice'] = data['to'];
 
-    //   }
-    // });
+      }
+    });
 
     $('.filter-btn').click(function (e) {
       e.preventDefault();
@@ -106,8 +106,8 @@ export class CategoryDetailComponent implements OnInit {
     let productTypeFilter = this.productTypeFilter;
     if (event.target.checked) {
       productTypeFilter.push(event.target.value);
-      //remove currency from list
-      //this.currencys.remove(e.target.value);
+      // remove currency from list
+      // this.currencys.remove(e.target.value);
 
     }
     else {
