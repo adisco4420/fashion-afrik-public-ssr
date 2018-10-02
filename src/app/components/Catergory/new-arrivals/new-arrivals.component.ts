@@ -41,7 +41,9 @@ export class NewArrivalsComponent implements OnInit {
       this.productSrv.fetchClearance(params['category'], params['productType'], params['sub']))
       .subscribe(
         res => {
-          this.arrivals = res;
+          this.arrivals = res.results;
+          console.log(this.arrivals);
+          
           this.category = t.snapshot.params['category'];
           this.productType = t.snapshot.params['productType'];
           this.sub = t.snapshot.params['sub'];
@@ -51,7 +53,7 @@ export class NewArrivalsComponent implements OnInit {
           console.log(err);
         });
 
-    $(".range-slider").ionRangeSlider({
+    $('.range-slider').ionRangeSlider({
       'type': 'double',
       onStart: function (data) {
         // console.log("onStart");
@@ -78,7 +80,7 @@ export class NewArrivalsComponent implements OnInit {
   fetchProductTypes(pt) {
     this.productTypeSrv.fetchProductTypes(pt).subscribe(
       res => {
-        this.productTypes = res;
+        this.productTypes = res.results;
 
       }, err => {
         console.log(err);
