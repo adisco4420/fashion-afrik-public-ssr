@@ -63,10 +63,8 @@
         </div>
       </div>
       <div class="col-sm-7 offset-md-1">
-        <h5 class="boldest">
-          {{category}} > {{productType}} > {{sub}}
-        </h5>
-        <p style="font-size: 12px">
+     
+        <p style="font-size: 17px">
           <b>{{products?.length || '0'}}</b> Item(s) found</p>
         <div class="row">
 
@@ -89,7 +87,7 @@
             </div>
           </div> -->
 
-          <ul class="listing">
+          <!-- <ul class="listing">
             <li class="product" *ngFor="let product of products">
               <a class="img-wrapper" routerLink="/product/{{product.id}}/{{product.slug}}">
                 <img src="{{product.banner_image}}" alt="{{product.slug}}" />
@@ -104,8 +102,39 @@
                 <a href="#" class="add-btn cart">Cart</a>
               </div>
             </li>
-          </ul>
+          </ul> -->
 
+
+          <header>
+           <div class="row img-men">
+              <div *ngIf="products?.length<1">
+                  <div class="col-md-12 text-center">
+                    <img class="img-responsive" src="http://store.vijaidental.com/assets/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg" alt="">
+                  </div>             
+                </div>
+                
+                <div class="row" *ngIf="products">
+                         <div class="col-md-6" *ngFor="let item of products">
+               <div class="card" >
+                 <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
+                   <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
+                 </a>
+                 <div class="card-footer text-center">
+                   <span class="prices"> {{item.sale_price  | currency:item.currency.code}}</span><br>
+                   <span class="name">{{item.name}}</span>          
+                 </div>
+               </div>     
+             </div>
+
+                </div>
+    
+           </div>
+         
+           <div *ngIf="!products&&products?.length>1" class="col-md-12 text-center">
+             <img src="assets/gif/blue-spinner.gif" alt="">
+             <h3>Loading .......</h3>
+           </div>
+         </header>
         </div>
       </div>
     </div>

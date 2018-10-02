@@ -136,6 +136,7 @@ export class CategoryDetailComponent implements OnInit {
         res => {
 
           this.products = res.results;
+        //  console.log(this.products);
         }, err => {
 
           console.log(err);
