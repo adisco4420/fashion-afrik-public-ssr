@@ -21,14 +21,35 @@
             "prefix": "app",
             "styles": [
                 "styles.scss",
-                "../node_modules/bootstrap/dist/css/bootstrap.css"
+                "../node_modules/bootstrap/dist/css/bootstrap.css",
+                "./assets/css/slick.css",
+                "./assets/raty/jquery.raty.css",
+                "./assets/css/slick-theme.css",
+                "./assets/ladda/ladda-themeless.min.css",
+                "./assets/iCheck/square/_all.css",
+                "./assets/awsel/awselect.min.css",
+                "./assets/summernote/dist/summernote.css",
+                "./assets/toast/jquery.toast.css"
             ],
             "scripts": [
                 "../node_modules/jquery/dist/jquery.min.js",
                 "../node_modules/popper.js/dist/umd/popper.min.js",
                 "../node_modules/bootstrap/dist/js/bootstrap.min.js",
                 "./assets/raty/jquery.raty.js",
-                "./assets/toast/jquery.toast.js"
+                "./assets/toast/jquery.toast.js",
+                "./assets/js/slick.min.js",
+                "./assets/ladda/spin.js",
+                "./assets/ladda/ladda.js",
+                "./assets/iCheck/icheck.min.js",
+                "./assets/awsel/awselect.min.js",
+                "./assets/summernote/dist/summernote.min.js",
+                "./assets/js/jquery.ddslick.min.js",
+                "./assets/js/goodshare.min.js",
+                "./assets/js/ion.rangeSlider.min.js",
+                "./assets/js/utils.js",
+                "./assets/js/intlTelInput.min.js",
+                "./assets/js/checkout.js", 
+                "./assets/js/custom.js"
             ],
             "environmentSource": "environments/environment.ts",
             "environments": {
