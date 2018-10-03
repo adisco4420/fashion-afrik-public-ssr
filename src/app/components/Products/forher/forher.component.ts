@@ -36,41 +36,53 @@ export class ForherComponent implements OnInit {
 
   ngOnInit() {
     $("html, body").animate({ scrollTop: 0 }, "slow");
+    this.getForHer();
+
     let t = this.route;
     let productFilter = this.theFilter;
     let a = this;
+    this.route.params.switchMap((params: Params) =>
+      this.productSrv.fetchProductsByCategory(params['category'], params['productType'], params['sub']))
+      .subscribe(
+        res => {
 
-    this.getForHer();
-    this.productType = t.snapshot.params['productType'];
+          this.products = res.results;
+          console.log(this.products);
+
+          this.productType = t.snapshot.params['productType'];
           this.category = t.snapshot.params['category'];
           this.sub = t.snapshot.params['sub'];
           // console.log(this.category, this.productType, this.sub);
           // console.log(this.products);
           a.fetchProductTypes(this.category);
-          this.fetchCategories();
-          $(".range-slider").ionRangeSlider({
-            'type': 'double',
-            onStart: function (data) {
-              // console.log("onStart");
-            },
-            onChange: function (data) {
-              // console.log("onChange");
-      
-      
-              productFilter['minPrice'] = data['from'];
-              productFilter['maxPrice'] = data['to'];
-      
-            }
-          });
-      
-          $('.filter-btn').click(function (e) {
-            e.preventDefault();
-            let button_text = $(this).text();
-            // setTimeout(function(){
-            $(this).text('Loading ...');
-            // },2000);
-          });
-  }
+        });
+        this.fetchCategories();
+
+        $(".range-slider").ionRangeSlider({
+          'type': 'double',
+          onStart: function (data) {
+            // console.log("onStart");
+          },
+          onChange: function (data) {
+            // console.log("onChange");
+    
+    
+            productFilter['minPrice'] = data['from'];
+            productFilter['maxPrice'] = data['to'];
+    
+          }
+        });
+    
+        $('.filter-btn').click(function (e) {
+          e.preventDefault();
+          let button_text = $(this).text();
+          // setTimeout(function(){
+          $(this).text('Loading ...');
+          // },2000);
+        });
+
+
+      }
   getForHer() { 
     this.forHerSrv.fetchForHer().subscribe(
       res => {
@@ -81,14 +93,16 @@ export class ForherComponent implements OnInit {
       }
     )
   }
-
-  addCategoryFilter(e) {
+ addCategoryFilter(e) {
 
     let categoryFilter = this.categoryFilter;
     if (e.target.checked) {
       categoryFilter.push(e.target.value);
+      //remove currency from list
+      //this.currencys.remove(e.target.value);
 
-    } else {
+    }
+    else {
 
       let index = categoryFilter.indexOf(e.target.value);
       if (index != -1) {
@@ -135,6 +149,8 @@ export class ForherComponent implements OnInit {
         res => {
 
           this.products = res.results;
+        //  console.log(res);
+          
         //  console.log(this.products);
         }, err => {
 
@@ -147,7 +163,7 @@ export class ForherComponent implements OnInit {
       res => {
 
         this.productTypes = res.results;
-        // console.log(this.productTypes);
+         console.log(this.productTypes);
       }, err => {
 
         console.log(err)
@@ -158,8 +174,10 @@ export class ForherComponent implements OnInit {
     this.categorySrv.fetchCategories().subscribe(
       res => {
 
-        this.categorys = res.results;
-        // console.log(this.categorys);
+        this.categorys = res.data;
+        console.log(res);
+        
+         console.log(this.categorys);
       }, err => {
 
         console.log(err);

@@ -136,6 +136,8 @@ export class CategoryDetailComponent implements OnInit {
         res => {
 
           this.products = res.results;
+        //  console.log(res);
+          
         //  console.log(this.products);
         }, err => {
 
@@ -148,7 +150,7 @@ export class CategoryDetailComponent implements OnInit {
       res => {
 
         this.productTypes = res.results;
-        // console.log(this.productTypes);
+       //  console.log(this.productTypes);
       }, err => {
 
         console.log(err)
@@ -159,8 +161,10 @@ export class CategoryDetailComponent implements OnInit {
     this.categorySrv.fetchCategories().subscribe(
       res => {
 
-        this.categorys = res.results;
-        // console.log(this.categorys);
+        this.categorys = res.data;
+        console.log(res);
+        
+         console.log(this.categorys);
       }, err => {
 
         console.log(err);
