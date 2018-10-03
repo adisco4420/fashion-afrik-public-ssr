@@ -29,7 +29,8 @@
                 "./assets/iCheck/square/_all.css",
                 "./assets/awsel/awselect.min.css",
                 "./assets/summernote/dist/summernote.css",
-                "./assets/toast/jquery.toast.css"
+                "./assets/toast/jquery.toast.css",
+                "./assets/css/animate.css"
             ],
             "scripts": [
                 "../node_modules/jquery/dist/jquery.min.js",

@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
   selectedCategory: any;
   selectedProductType: any;
   error: any;
+  x: any;
 
   filterProduct: Subscription
 
@@ -51,7 +52,8 @@ export class HeaderComponent implements OnInit {
     this.fetchCategories();
     this.fetchCurrencys();
     this.getCart();
-    this.fetchExchangeRates()
+    this.fetchExchangeRates();
+
 
 
     // this.fetchStores();

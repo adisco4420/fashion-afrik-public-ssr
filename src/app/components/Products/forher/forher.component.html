@@ -13,10 +13,9 @@
           <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
             <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
           </a>
-          <div class="card-footer">
+          <div class="card-footer text-center">
             <span class="price"> {{item.sale_price  | currency:item.currency.code}}</span><br>
-            <span class="name">{{item.name}}</span> <a routerLink="/product/{{item.id}}/{{item.slug}}" class="btn btn-secondary text-light btn-sm pull-right"> <span class="fa fa-shopping-bag"></span> BUY NOW</a>
-  
+            <span class="name">{{item.name}}</span> 
           </div>
         </div>     
       </div>

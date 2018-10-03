@@ -77,22 +77,88 @@ export class NewArrivalsComponent implements OnInit {
     })
   };
 
+  addCategoryFilter(e) {
+
+    let categoryFilter = this.categoryFilter;
+    if (e.target.checked) {
+      categoryFilter.push(e.target.value);
+      //remove currency from list
+      //this.currencys.remove(e.target.value);
+
+    }
+    else {
+
+      let index = categoryFilter.indexOf(e.target.value);
+      if (index != -1) {
+        categoryFilter.splice(index, 1);
+      }
+
+    }
+    this.theFilter['categorys'] = categoryFilter;
+
+  }
+
+  addProductTypeFilter(event) {
+
+    let productTypeFilter = this.productTypeFilter;
+    if (event.target.checked) {
+      productTypeFilter.push(event.target.value);
+      // remove currency from list
+      // this.currencys.remove(e.target.value);
+
+    }
+    else {
+
+      let index = productTypeFilter.indexOf(event.target.value);
+      if (index != -1) {
+        productTypeFilter.splice(index, 1);
+      }
+
+    }
+    this.theFilter['productTypes'] = productTypeFilter;
+
+
+
+  }
+
+  applyFilter() {
+    // let filters = {};
+    // filters['prices'] = this.theFilter;
+    // filters['categories'] = this.categoryFilter;
+    // filters['productTypes'] = this.productTypeFilter;
+
+    this.route.params.switchMap((params: Params) =>
+      this.productSrv.fetchProductsByCategory(params['category'], params['productType'], params['sub'], this.theFilter))
+      .subscribe(
+        res => {
+
+          this.products = res.results;
+        //  console.log(this.products);
+        }, err => {
+
+          console.log(err);
+        });
+  }
+
   fetchProductTypes(pt) {
     this.productTypeSrv.fetchProductTypes(pt).subscribe(
       res => {
-        this.productTypes = res.results;
 
+        this.productTypes = res.results;
+        // console.log(this.productTypes);
       }, err => {
-        console.log(err);
+
+        console.log(err)
       });
   }
+
+
 
   fetchCategories() {
 
     this.categorySrv.fetchCategories().subscribe(
       res => {
-        this.categorys = res;
-        
+        this.categorys = res.results;
       }, err => {
         console.log(err);
       });
