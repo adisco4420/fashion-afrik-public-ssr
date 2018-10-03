@@ -65,66 +65,30 @@
       <div class="col-sm-7 offset-md-1">
           <div class="row">
               <div class="col-md-12 text-center">
-                <h2>Category</h2>
+                <h2>For Him</h2>
               </div>
             </div>
         <p style="font-size: 17px">
-          <b>{{products?.length || '0'}}</b> Item(s) found</p>
+          <b>{{forhim?.length || '0'}}</b> Item(s) found</p>
         <div class="row">
 
-          <!-- <div class="col-md-6 col-lg-4" *ngFor="let product of products">
-            <div class="product-component text-center">
-              <div class="product-image">
-                <a routerLink="/product/{{product.id}}/{{product.slug}}">
-                  <img src="{{product.banner_image}}" alt="product image" class="img-fluid">
-                </a>
-              </div>
-              <div class="product-title">
-                <h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;">
-                  <a style="color: #011936" routerLink="/product/{{product.id}}/{{product.slug}}">{{product.name}}</a>
-                </h6>
-                <span class="text-center">
-                  <span>{{t.getItem('currency')}}</span>
-                  <b>{{product.sale_price / t.getItem('rate') |number}}</b>
-                </span>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <ul class="listing">
-            <li class="product" *ngFor="let product of products">
-              <a class="img-wrapper" routerLink="/product/{{product.id}}/{{product.slug}}">
-                <img src="{{product.banner_image}}" alt="{{product.slug}}" />
-              </a>
-              <div class="info">
-                <div class="title">{{product.name}}</div>
-                <div class="price">{{t.getItem('currency')}}{{product.sale_price / t.getItem('rate') | number}}</div>
-              </div>
-
-              <div class="actions-wrapper">
-                <a href="#" class="add-btn wishlist">Wishlist</a>
-                <a href="#" class="add-btn cart">Cart</a>
-              </div>
-            </li>
-          </ul> -->
-
-
-          <header>
+             <header>
            <div class="row img-men">
-              <div *ngIf="products?.length<1">
+              <div *ngIf="forhim?.length<1">
                   <div class="col-md-12 text-center">
                     <img class="img-responsive" src="http://store.vijaidental.com/assets/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg" alt="">
                   </div>             
                 </div>
                 
-                <div class="row" *ngIf="products">
-                         <div class="col-md-6" *ngFor="let item of products">
+                <div class="row" *ngIf="forhim">
+                         <div class="col-md-6" *ngFor="let item of forhim">
                <div class="card" >
                  <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
                    <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
                  </a>
                  <div class="card-footer text-center">
-                   <span class="prices"> {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span><br>
+                   <span class="prices">{{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}
+                   </span><br>
                    <span class="name">{{item.name}}</span>          
                  </div>
                </div>     
@@ -134,7 +98,7 @@
     
            </div>
          
-           <div *ngIf="!products&&products?.length>1" class="col-md-12 text-center">
+           <div *ngIf="!forhim&&forhim?.length>1" class="col-md-12 text-center">
              <img src="assets/gif/blue-spinner.gif" alt="">
              <h3>Loading .......</h3>
            </div>

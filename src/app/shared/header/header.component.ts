@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   error: any;
   x: any;
 
-  filterProduct: Subscription
+  filterProduct: Subscription;
 
   @Input()
   cart: any[];
