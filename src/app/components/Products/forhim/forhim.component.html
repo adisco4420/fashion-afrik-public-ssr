@@ -1,47 +1,109 @@
 <app-header ></app-header>
+<section class="padded">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <!-- filter section -->
 
-<div class="container">
-  <header>
-     <div class="row">
-      <div class="col-md-12 text-center">
-        <i><h1>For Her</h1></i>
-      </div>
-     </div>
-    <div class="row img-men">
-       <div class="col-md-4" *ngFor="let item of forhim">
-        <div class="card" >
-          <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
-            <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
-          </a>
-          <div class="card-footer text-center">
-            <span class="price"> {{item.sale_price  | currency:item.currency.code}}</span><br>
-            <span class="name">{{item.name}}</span> 
-  
+        <div id="accordion" role="tablist">
+          <!-- start filter box -->
+          <div class="card">
+            <div class="card-header" role="tab" id="FilterTab">
+              <h5 class="mb-0">
+                <a class="boldest" data-toggle="collapse" href="#FilterTabPanel" aria-expanded="true" aria-controls="FilterTabPanel">
+                  Filter
+                </a>
+                <span class="icon float-right">
+                  <i class="ion-plus-round"></i>
+                </span>
+                <button class="btn btn-secondary btn-block filter-btn" (click)="applyFilter()">Apply</button>
+              </h5>
+            </div>
+
+            <div id="FilterTabPanel" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body" style="padding-right: 15px;">
+                <ul class="nav flex-column">
+                  <!-- update filter button -->
+                  <div style="margin-bottom: 10px">
+                    <label>Price Range</label>
+                    <input type="text" class="range-slider" value="" />
+
+                  </div>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>     
-      </div>
-    </div>
-  
-    <div *ngIf="!forhim" class="col-md-12 text-center">
-      <img src="assets/gif/blue-spinner.gif" alt="">
-      <h3>Loading .......</h3>
-    </div>
-    <!-- <div class="card-deck mt-5 mb-5">
-      <div class="card" *ngFor="let item of forher">
-        <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
-          <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
-        </a>
-        <div class="card-footer">
-          <span class="price">{{item.currency.code}} {{item.sale_price}}</span><br>
-          <span class="name">{{item.name}}</span><br>
+          <div class="card">
+            <div class="card-header" role="tab" id="headingTwo">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  Product Type
+                </a>
+                <span class="icon float-right">
+                  <i class="ion-plus-round"></i>
+                </span>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <div *ngFor="let productType of productTypes">
+                      <label for="{{productType.slug}}">
+                        <input type="checkbox" id="{{productType.slug}}" value="{{productType.slug}}" (change)="addProductTypeFilter($event)"> &nbsp; {{productType.name}}
+                      </label>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
-    </div>  -->
-  </header>
+      <div class="col-sm-7 offset-md-1">
+          <div class="row">
+              <div class="col-md-12 text-center">
+                <h2>For Her</h2>
+              </div>
+            </div>
+        <p style="font-size: 17px">
+          <b>{{forhim?.length || '0'}}</b> Item(s) found</p>
+        <div class="row">
 
-  <section>
+             <header>
+           <div class="row img-men">
+              <div *ngIf="forhim?.length<1">
+                  <div class="col-md-12 text-center">
+                    <img class="img-responsive" src="http://store.vijaidental.com/assets/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg" alt="">
+                  </div>             
+                </div>
+                
+                <div class="row" *ngIf="forhim">
+                         <div class="col-md-6" *ngFor="let item of forhim">
+               <div class="card" >
+                 <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
+                   <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
+                 </a>
+                 <div class="card-footer text-center">
+                   <span class="prices"> {{item.sale_price  | currency:item.currency.code}}</span><br>
+                   <span class="name">{{item.name}}</span>          
+                 </div>
+               </div>     
+             </div>
 
-  </section>
-
-</div>
+                </div>
+    
+           </div>
+         
+           <div *ngIf="!forhim&&forhim?.length>1" class="col-md-12 text-center">
+             <img src="assets/gif/blue-spinner.gif" alt="">
+             <h3>Loading .......</h3>
+           </div>
+         </header>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

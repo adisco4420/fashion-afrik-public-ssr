@@ -22,6 +22,8 @@ import { SizeService } from './../../services/size.service';
 import { ForherComponent } from './forher/forher.component';
 import { ForhimComponent } from './forhim/forhim.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductTypesService } from './services/product-types.service';
+import { CategoryService } from './services/category.service';
 
 
 
@@ -48,7 +50,9 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
         FabricService,
         SizeService,
         CurrencyService,
-        ExchangeRateService
+        ExchangeRateService,
+        ProductTypesService,
+        CategoryService
     ]
   })
   export class ProductsModule { }
