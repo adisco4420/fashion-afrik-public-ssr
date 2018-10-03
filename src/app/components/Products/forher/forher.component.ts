@@ -166,64 +166,6 @@ export class ForherComponent implements OnInit {
       });
 
   }
-  fetchCurrencys() {
-
-    this.currencySrv.fetchCurrencys().subscribe(
-      res => {
-      //  console.log(res.data);
-        this.currencys = res.data;
-        // console.log(this.currencys);
-      }, err => {
-        console.log(err);
-      });
-  }
-
-
-  fetchExchangeRates() {
-    this.rateSrv.fetchRates().subscribe((res: any) => {
-      this.exchange_rates = res.results;
-      // console.log(this.exchange_rates);
-
-      const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
-      // localStorage.setItem('rate', selected_currency.rate);
-
-      if (this.product && this.product['currency  ']) {
-        if (!(this.product['currency']['code'] === selected_currency['currency']['code'])) {
-
-
-          localStorage.setItem('rate', selected_currency['rate']);
-        } else {
-          localStorage.setItem('rate', String(1));
-        }
-
-      }
-    }, err => {
-      console.log(err);
-    })
-
-  }
-
-  changeCurrency(evt) {
-    localStorage.setItem('currency', evt.target.value);
-    const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
-
-    if (!(this.product['currency']['code'] === selected_currency['currency']['code'])) {
-
-      localStorage.setItem('rate', selected_currency['rate']);
-    } else {
-      localStorage.setItem('rate', String(1));
-    }
-
-  };
-
-  numbersOnly(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
-
-    const inputChar = String.fromCharCode(event.charCode);
-    if (event.keyCode !== 8 && !pattern.test(inputChar)) {
-      event.preventDefault();
-    }
-  }
 
 
 
