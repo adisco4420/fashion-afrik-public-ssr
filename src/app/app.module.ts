@@ -29,6 +29,10 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { CurrencyService } from './services/currency.service';
+import { ExchangeRateService } from './services/exchange-rate.service';
+import { ProductTypesService } from './services/product-types.service';
+import { CategoryService } from './services/category.service';
 
 
 
@@ -66,6 +70,11 @@ import { NotFoundPageComponent } from './components/not-found-page/not-found-pag
         TextMaskModule,
         // EcomProductZoomModalModule,
     ],
-    providers: [Globals],
+    providers: [Globals,
+                CurrencyService,
+                ExchangeRateService,
+                ProductTypesService,
+                CategoryService
+            ],
 })
 export class AppModule { }

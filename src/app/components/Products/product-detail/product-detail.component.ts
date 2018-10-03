@@ -52,7 +52,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   img_url: any;
   url: any;
   error: any;
-  cart: any[];
+  cart: any[]; 
   colors: any[];
   fabrics: any[];
   sizes: any[];
@@ -103,24 +103,24 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       'upperBodyLength': ['', Validators.required],
     });
 
-    // $(function () {
+    $(function () {
 
-    //   $('.slider-for').slick({
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     arrows: true,
-    //     fade: true,
-    //     asNavFor: '.slider-nav'
-    //   });
-    //   $('.slider-nav').slick({
-    //     slidesToShow: 5,
-    //     slidesToScroll: 1,
-    //     // asNavFor: '.slider-for',
-    //     dots: false,
-    //     centerMode: true,
-    //     focusOnSelect: true
-    //   });
-    // });
+      $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        fade: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        // asNavFor: '.slider-for',
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true
+      });
+    });
 
     $('.filter').click(function (e) {
       $(this).addClass('is-loading');
@@ -173,43 +173,43 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
     $(function () {
 
-      // $('.slider-for').slick({
-      //   slidesToShow: 1,
-      //   slidesToScroll: 1,
-      //   arrows: true,
-      //   fade: true,
-      //   asNavFor: '.slider-nav'
-      // });
-      // $('.slider-nav').slick({
-      //   slidesToShow: 5,
-      //   slidesToScroll: 1,
-      //   // asNavFor: '.slider-for',
-      //   dots: false,
-      //   centerMode: true,
-      //   focusOnSelect: true
-      // });
+      $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        fade: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        // asNavFor: '.slider-for',
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true
+      });
     });
   }
 
   ngAfterViewInit() {
-    // $(function () {
+    $(function () {
 
-    //   $('.slider-for').slick({
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     arrows: true,
-    //     fade: true,
-    //     asNavFor: '.slider-nav'
-    //   });
-    //   $('.slider-nav').slick({
-    //     slidesToShow: 5,
-    //     slidesToScroll: 1,
-    //     // asNavFor: '.slider-for',
-    //     dots: false,
-    //     centerMode: true,
-    //     focusOnSelect: true
-    //   });
-    // });
+      $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        fade: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        // asNavFor: '.slider-for',
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true
+      });
+    });
   }
 
   viewImage(_image) {
@@ -217,11 +217,11 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     this.image = _image;
   }
 
+
   fetchCurrencys() {
 
-    this.currencySrv.fetchCurrencys().subscribe(
-      res => {
-      //  console.log(res.data);
+    this.currencySrv.fetchCurrencys()
+      .subscribe(res => {
         this.currencys = res.data;
         // console.log(this.currencys);
       }, err => {
@@ -230,41 +230,25 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   }
 
   fetchExchangeRates() {
-    this.rateSrv.fetchRates().subscribe((res: any) => {
-      this.exchange_rates = res.results;
-      // console.log(this.exchange_rates);
 
+    this.rateSrv.fetchRates().subscribe(res => {
+
+      this.exchange_rates = res.data;
+       console.log(this.exchange_rates);
       const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
-      // localStorage.setItem('rate', selected_currency.rate);
-
-      if (this.product && this.product['currency  ']) {
-        if (!(this.product['currency']['code'] === selected_currency['currency']['code'])) {
-
-
-          localStorage.setItem('rate', selected_currency['rate']);
-        } else {
-          localStorage.setItem('rate', String(1));
-        }
-
-      }
+      localStorage.setItem('rate', selected_currency.rate);
     }, err => {
       console.log(err);
-    })
+    });
 
   }
 
   changeCurrency(evt) {
     localStorage.setItem('currency', evt.target.value);
     const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
+    localStorage.setItem('rate', selected_currency.rate);
 
-    if (!(this.product['currency']['code'] === selected_currency['currency']['code'])) {
-
-      localStorage.setItem('rate', selected_currency['rate']);
-    } else {
-      localStorage.setItem('rate', String(1));
-    }
-
-  };
+  }
 
   numbersOnly(event: any) {
     const pattern = /[0-9\+\-\ ]/;

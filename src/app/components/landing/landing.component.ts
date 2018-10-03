@@ -4,6 +4,8 @@ import { Title, Meta, TransferState, makeStateKey } from '@angular/platform-brow
 import { ProductService } from '../../services/product.service';
 import { NewArrivalsService } from '../../services/new-arrivals.service';
 import { Subscription } from 'rxjs/RX';
+import { CurrencyService } from '../../services/currency.service';
+import { ExchangeRateService } from '../../services/exchange-rate.service';
 
 
 
@@ -17,20 +19,21 @@ const STATE_KEY_NEWARRIVALS = makeStateKey('newArrival');
 export class LandingComponent implements OnInit , OnDestroy{
 
   newArrivals: any[];
-  hers: any[];
-  his: any[];
-  cun: any;
   error: any;
-  menClean: Subscription;
-  womenClean: Subscription;
   arrivalClean: Subscription;
+  t = localStorage;
+  currencys: any[];
+  exchange_rates: any[];
+  product: Object = {};
 
   constructor(
     private productSrv: ProductService,
     private newArrivalSrv: NewArrivalsService,
     private title: Title,
     private meta: Meta ,
-    private state: TransferState
+    private state: TransferState,
+    private currencySrv: CurrencyService,
+    private rateSrv: ExchangeRateService,
         ) { }
 
   ngOnInit() {
@@ -38,10 +41,7 @@ export class LandingComponent implements OnInit , OnDestroy{
     this.meta.updateTag({
         'description': 'E-commerce shopping site for ankara'
     });
-    this.fetchWomen();
-    this.fetchMen();
     this.fetchNewArrivals();
-    this.cun = 'USD';
   }
 
   fetchNewArrivals() {
@@ -52,31 +52,68 @@ export class LandingComponent implements OnInit , OnDestroy{
       console.log(this.newArrivals);
     }, err => {
       console.log(err);
-    })
+    });
+  }
+  fetchCurrencys() {
+
+    this.currencySrv.fetchCurrencys().subscribe(
+      res => {
+      //  console.log(res.data);
+        this.currencys = res.data;
+        // console.log(this.currencys);
+      }, err => {
+        console.log(err);
+      });
   }
 
-  fetchWomen() {
-   this.womenClean =  this.productSrv.fetchHer()
-    .subscribe(res => {
-      this.hers = res.results;
-      console.log(this.hers);
+
+  fetchExchangeRates() {
+    this.rateSrv.fetchRates().subscribe((res: any) => {
+      this.exchange_rates = res.results;
+      // console.log(this.exchange_rates);
+
+      const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
+      // localStorage.setItem('rate', selected_currency.rate);
+
+      if (this.product && this.product['currency  ']) {
+        if (!(this.product['currency']['code'] === selected_currency['currency']['code'])) {
+
+
+          localStorage.setItem('rate', selected_currency['rate']);
+        } else {
+          localStorage.setItem('rate', String(1));
+        }
+
+      }
     }, err => {
       console.log(err);
     })
+
   }
 
-  fetchMen() {
-  this.menClean =  this.productSrv.fetchHim()
-    .subscribe(res => {
-      this.his = res.results;
-      console.log(this.his);
-    }, err => {
-      console.log(err);
-    })
+  changeCurrency(evt) {
+    localStorage.setItem('currency', evt.target.value);
+    const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
+
+    if (!(this.product['currency']['code'] === selected_currency['currency']['code'])) {
+
+      localStorage.setItem('rate', selected_currency['rate']);
+    } else {
+      localStorage.setItem('rate', String(1));
+    }
+
+  };
+
+  numbersOnly(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+
+    const inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode !== 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
   }
+
   ngOnDestroy() {
-    this.arrivalClean.unsubscribe()
-    this.womenClean.unsubscribe()
-    this.menClean.unsubscribe();
+    this.arrivalClean.unsubscribe();
   }
 }
