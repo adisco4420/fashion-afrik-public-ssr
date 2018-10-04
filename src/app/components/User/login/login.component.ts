@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit {
   loginUser: Object = {};
   registerUser: Object = {};
   customer: Object = {};
+  errorLogin: string;
+  errorLoginT = false;
+  errorRegister = false;
   loggedIn: Boolean = false;
   loading: boolean = false;
   is_customer: boolean = false;
@@ -84,9 +87,9 @@ export class LoginComponent implements OnInit {
 
           this.not_customer = true;
         }
-
       }, err => {
-
+        this.errorLogin = 'password rejected';
+        this.errorLoginT = true;
         console.log(err);
         this.loading = false;
       });
@@ -118,8 +121,8 @@ export class LoginComponent implements OnInit {
             this.not_customer = true;
           }
         }, err => {
-
-          console.log(err)
+          this.errorRegister = true;
+          console.log(err);
           this.loading = false;
         });
       this.loading = false;

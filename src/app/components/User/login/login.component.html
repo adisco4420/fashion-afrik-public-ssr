@@ -16,7 +16,13 @@
 				<h4 class="form-title">LOGIN</h4>
 				<form [formGroup]="loginForm" (ngSubmit)="login()" class="loginForm" novalidate>
 					<div class="row">
+							<div *ngIf="errorLoginT" class="col-md-12">
+									<div class="alert alert-danger">
+										<strong>Login</strong> Invalid Email  or Password
+									  </div>						  
+								</div>
 						<div class="form-group col-md-12">
+
 							<input type="text" class="form-control" name="email" [(ngModel)]="loginUser.email" [formControl]="loginForm.controls['email']"
 							 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
 
@@ -38,6 +44,7 @@
 							</p>
 						</div>
 					</div>
+
 					<button type="submit" class="btn btn-block btn-accent" [disabled]="loading">
 						Login
 						<i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
@@ -49,7 +56,13 @@
 				<h4 class="form-title">Sign Up</h4>
 				<form [formGroup]="registerForm" (ngSubmit)="register()" class="registerForm" novalidate>
 					<div class="row">
+							<div *ngIf="errorRegister" class="col-md-12">
+									<div class="alert alert-danger">
+										<strong>Register</strong>  User Exists
+									  </div>						  
+								</div>
 						<div class="form-group col-md-6">
+
 							<input type="text" class="form-control" [(ngModel)]="registerUser.first_name" [formControl]="registerForm.controls['first_name']"
 							 placeholder="First Name">
 

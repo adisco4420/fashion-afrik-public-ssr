@@ -32,6 +32,7 @@ export class PaymentComponent implements OnInit {
   currency: any;
   sub_total: any;
   shipping_cost: any;
+  errorCardDetail = false;
 
   constructor(private paymentSrv: PaymentService, private fb: FormBuilder, private _zone: NgZone, private cartSrv: CartService) {
 
@@ -103,7 +104,7 @@ export class PaymentComponent implements OnInit {
             this.paid = true;
             notifyPayment.emit(this.paid);
           }, err => {
-
+            this.errorCardDetail = true;
             console.log(err);
           })
         } else {

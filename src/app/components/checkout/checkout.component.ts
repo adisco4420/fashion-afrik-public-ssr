@@ -28,6 +28,9 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
   registerAttempt: boolean = false;
   loading: boolean = false;
 
+  errorLoginT = false;
+  errorRegister = false;
+
   loginForm: FormGroup;
   registerForm: FormGroup;
 
@@ -201,7 +204,7 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
         }
       }, err => {
         this.notifyLogin.emit(this.loggedIn);
-
+        this.errorLoginT = true;
         console.log(err);
         this.loading = false;
       });
@@ -233,7 +236,7 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
           }
         }, err => {
           this.notifyLogin.emit(this.loggedIn);
-
+          this.errorRegister = true;
           console.log(err)
           this.loading = false;
         });

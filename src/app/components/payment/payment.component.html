@@ -15,6 +15,11 @@
                     </div>
                     <form (ngSubmit)="pay($event)" #paymentForm="ngForm">
                         <div class="row">
+                            	<div *ngIf="errorCardDetail" class="col-md-12">
+                                        <div class="alert alert-danger">
+                                            <strong>Card-Detail</strong> Invalid Card Details
+                                          </div>						  
+                                    </div>
                             <div class="form-group col-md-12">
                                 <label for="cardnumber">Card number</label>
                                 <input type="text" placeholder="1234-1234-1234-1234" [(ngModel)]="cardnumber" [textMask]="{mask: masks.cardNumber}" #pay_cardnumber="ngModel" name="pay_cardnumber" data-stripe="number" (keypress)="numbersOnly($event)" required>
