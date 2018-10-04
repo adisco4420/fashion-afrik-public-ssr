@@ -143,8 +143,8 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
         res => {
           this.product = res;
           console.log(this.product);
-          console.log(this.product.name);
-          this.seoTitle = this.product.name;
+        //  console.log(this.product.name);
+        //  this.seoTitle = this.product.name;
           const product_imgs = [];
           this.image = this.product['banner_image'];
 

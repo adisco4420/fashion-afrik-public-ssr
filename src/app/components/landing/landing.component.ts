@@ -22,7 +22,7 @@ export class LandingComponent implements OnInit , OnDestroy{
   error: any;
   arrivalClean: Subscription;
   t = localStorage;
-  currencys: any[];
+  currencys: any[]; 
   exchange_rates: any[];
   product: Object = {};
 
