@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Title, Meta, TransferState, makeStateKey } from '@angular/platform-browser';
 import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import 'rxjs/add/operator/switchMap';
@@ -27,13 +27,18 @@ export class CategoryDetailComponent implements OnInit {
   productTypeFilter = [];
   theFilter: Object = {};
   error: any;
+  seoTitle: string;
 
 
   constructor(private productSrv: ProductService, private productTypeSrv: ProductTypesService,
     private categorySrv: CategoryService,
-    private route: ActivatedRoute, private globals: Globals) { }
+    private route: ActivatedRoute, private globals: Globals,
+    private title: Title,
+    private meta: Meta ,
+    private state: TransferState,) { }
 
   ngOnInit() {
+
     let t = this.route;
     let productFilter = this.theFilter;
     let a = this;
@@ -48,12 +53,20 @@ export class CategoryDetailComponent implements OnInit {
           this.productType = t.snapshot.params['productType'];
           this.category = t.snapshot.params['category'];
           this.sub = t.snapshot.params['sub'];
-          // console.log(this.category, this.productType, this.sub);
+           console.log(this.category, this.productType, this.sub);
+           this.seoTitle = this.category + ' ' + this.productType +  ' '  + this.sub;
+           console.log(this.seoTitle);
+           
           // console.log(this.products);
           a.fetchProductTypes(this.category);
+          this.title.setTitle(this.seoTitle);
+          this.meta.updateTag({
+              'description': 'African fashion to the world. Shop for the best african outfits , ready to ship worldwide today',
+              'keyword': ' vogueafriq, africa, african fashion, nigerian fashion, owambe'
+          });
         });
-
-
+        
+       
     this.fetchCategories();
 
     $(".range-slider").ionRangeSlider({

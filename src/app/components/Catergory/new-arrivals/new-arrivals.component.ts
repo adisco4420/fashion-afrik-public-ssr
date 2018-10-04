@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { ProductTypesService } from '../services/product-types.service';
+import { Title, Meta, TransferState, makeStateKey } from '@angular/platform-browser';
 import { CategoryService } from '../services/category.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 declare var $: any;
@@ -20,6 +21,7 @@ export class NewArrivalsComponent implements OnInit {
   categorys: any[];
   productTypes: any[];
   sales: any[];
+  seoTitle: string;
 
   category: string;
   productType: string;
@@ -29,7 +31,10 @@ export class NewArrivalsComponent implements OnInit {
   theFilter: Object = {};
   error: any;
   constructor(private productSrv: ProductService, private productTypeSrv: ProductTypesService,
-    private categorySrv: CategoryService, private route: ActivatedRoute) { }
+    private categorySrv: CategoryService, private route: ActivatedRoute,
+    private title: Title,
+    private meta: Meta ,
+    private state: TransferState) { }
 
   ngOnInit() {
     //this.productSrv.fetchNewArrivals().then(response => this.arrivals = response.results)
@@ -47,8 +52,13 @@ export class NewArrivalsComponent implements OnInit {
           this.category = t.snapshot.params['category'];
           this.productType = t.snapshot.params['productType'];
           this.sub = t.snapshot.params['sub'];
-
+          this.seoTitle = this.category + ' ' + this.productType +  ' '  + this.sub;
           a.fetchProductTypes(this.category);
+          this.title.setTitle(this.seoTitle);
+          this.meta.updateTag({
+              'description': 'African fashion to the world. Shop for the best african outfits , ready to ship worldwide today',
+              'keyword': ' vogueafriq, africa, african fashion, nigerian fashion, owambe'
+          });
         }, err => {
           console.log(err);
         });

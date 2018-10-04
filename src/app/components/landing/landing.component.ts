@@ -39,7 +39,8 @@ export class LandingComponent implements OnInit , OnDestroy{
   ngOnInit() {
     this.title.setTitle('Home / VogueAfriq');
     this.meta.updateTag({
-        'description': 'E-commerce shopping site for ankara'
+        'description': 'African fashion to the world. Shop for the best african outfits , ready to ship worldwide today',
+        'keyword': ' vogueafriq, africa, african fashion, nigerian fashion, owambe'
     });
     this.fetchNewArrivals();
   }
@@ -49,6 +50,9 @@ export class LandingComponent implements OnInit , OnDestroy{
    this.arrivalClean = this.newArrivalSrv.fetchNewArrivals()
     .subscribe(res => {
       this.newArrivals = res.results;
+      for (const arrival of this.newArrivals) {
+          console.log(arrival.name);
+      }
       console.log(this.newArrivals);
     }, err => {
       console.log(err);

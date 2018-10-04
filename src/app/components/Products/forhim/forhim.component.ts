@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ForhimService } from '../services/forhim.service';
+import { Title, Meta, TransferState, makeStateKey } from '@angular/platform-browser';
 import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Globals } from '../../../shared/api';
@@ -32,10 +33,18 @@ export class ForhimComponent implements OnInit {
 
   constructor(private forHimSrv: ForhimService, private productSrv: ProductService, private productTypeSrv: ProductTypesService,
     private categorySrv: CategoryService,
-    private route: ActivatedRoute, private globals: Globals) { }
+    private route: ActivatedRoute, private globals: Globals,
+    private title: Title,
+    private meta: Meta ,
+    private state: TransferState,) { }
 
   ngOnInit() {
     $("html, body").animate({ scrollTop: 0 }, "slow");
+    this.title.setTitle('ForHim Products');
+    this.meta.updateTag({
+        'description': 'African fashion to the world. Shop for the best african outfits , ready to ship worldwide today',
+        'keyword': ' vogueafriq, africa, african fashion, nigerian fashion, owambe'
+    });
     let t = this.route;
     let productFilter = this.theFilter;
     let a = this;

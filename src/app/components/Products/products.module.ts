@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+// import social buttons module
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 // module
 import { SharedModule } from '../../shared/shared.module';
 
@@ -33,7 +34,8 @@ import { CategoryService } from './services/category.service';
       RouterModule.forChild(ProductsRoutes),
       SharedModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      JwSocialButtonsModule
     ],
     declarations: [
     //  HeaderComponent

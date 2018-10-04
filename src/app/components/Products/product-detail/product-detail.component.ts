@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 // import { EcomProductZoomModalImage, EcomProductZoomModalService } from '@plency/ecom-product-zoom-modal';
-
+import { Title, Meta, TransferState, makeStateKey } from '@angular/platform-browser';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
@@ -19,7 +19,7 @@ import { CurrencyService } from '../services/currency.service';
 import { ExchangeRateService } from '../services/exchange-rate.service';
 
 declare var $: any;
-
+const STATE_KEY_NEWARRIVALS = makeStateKey('newArrival');
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -59,6 +59,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   allImages: any[] = [];
   imgWindex: any[] = [];
   image: any;
+  seoTitle: string;
 
   private formSubmitAttempt: boolean;
 
@@ -79,7 +80,10 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   constructor(private productSrv: ProductService, private route: ActivatedRoute, private globals: Globals,
     private cartSrv: CartService, private colorSrv: ColorService, private sizeSrv: SizeService,
     private fabricSrv: FabricService, fb: FormBuilder, private currencySrv: CurrencyService,
-    private rateSrv: ExchangeRateService, /* private prodZoomModalService: EcomProductZoomModalService */) {
+    private rateSrv: ExchangeRateService,
+    private titles: Title,
+    private meta: Meta ,
+    private state: TransferState, /* private prodZoomModalService: EcomProductZoomModalService */) {
 
     this.cartForm = fb.group({
       'qty': ['', Validators.required],
@@ -131,12 +135,16 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     $("html, body").animate({ scrollTop: 0 }, "slow");
 
+   
+
     this.route.params.switchMap((params: Params) =>
       this.productSrv.findProductByUUID(params['id']))
       .subscribe(
         res => {
           this.product = res;
           console.log(this.product);
+          console.log(this.product.name);
+          this.seoTitle = this.product.name;
           const product_imgs = [];
           this.image = this.product['banner_image'];
 
@@ -148,6 +156,11 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
               slide: 'slide_' + (i + 1),
             });
           }
+          this.titles.setTitle(this.seoTitle);
+          this.meta.updateTag({
+              'description': 'African fashion to the world. Shop for the best african outfits , ready to ship worldwide today',
+              'keyword': ' vogueafriq, africa, african fashion, nigerian fashion, owambe'
+          });
           // const length = this.allImages.length;
           this.allImages.unshift({
             id: 0,
