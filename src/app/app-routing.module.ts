@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { LandingComponent } from './components/landing/landing.component';
-import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+
 import { StoreDetailComponent } from './components/store-detail/store-detail.component';
+import { LandingComponent } from './components/Core/landing/landing.component';
+import { NotFoundPageComponent } from './components/Core/not-found-page/not-found-page.component';
 
 const routes: Routes = [
     { path: '', component: LandingComponent },

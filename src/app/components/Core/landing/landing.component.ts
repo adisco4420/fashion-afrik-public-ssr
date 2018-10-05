@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title, Meta, TransferState, makeStateKey } from '@angular/platform-browser';
 
-import { ProductService } from '../../services/product.service';
-import { NewArrivalsService } from '../../services/new-arrivals.service';
+import { ProductService } from '../../../services/product.service';
+import { NewArrivalsService } from '../../../services/new-arrivals.service';
 import { Subscription } from 'rxjs/RX';
-import { CurrencyService } from '../../services/currency.service';
-import { ExchangeRateService } from '../../services/exchange-rate.service';
+import { CurrencyService } from '../../../services/currency.service';
+import { ExchangeRateService } from '../../../services/exchange-rate.service';
 
 
 
