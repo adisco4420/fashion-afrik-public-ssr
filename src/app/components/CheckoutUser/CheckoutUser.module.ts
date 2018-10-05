@@ -15,6 +15,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ShippingComponent } from './shipping/shipping.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 
@@ -35,7 +36,7 @@ import { ShippingComponent } from './shipping/shipping.component';
         ConfirmationComponent,
         PaymentComponent,
         ShippingComponent,
-     
+        WishlistComponent
     ],
 })
 export class ChectoutUserModule { }

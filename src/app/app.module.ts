@@ -14,7 +14,6 @@ import { Globals } from './shared/api';
 // components
 import { AppComponent } from './app.component';
 import { StoreDetailComponent } from './components/store-detail/store-detail.component';
-import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
@@ -30,7 +29,6 @@ import { CategoryService } from './services/category.service';
         // LandingComponent,
         // FooterComponent,
         StoreDetailComponent,
-        WishlistComponent,
         NotFoundPageComponent,
     ],
     imports: [
