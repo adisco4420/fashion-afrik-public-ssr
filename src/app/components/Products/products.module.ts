@@ -25,6 +25,8 @@ import { ForhimComponent } from './forhim/forhim.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductTypesService } from './services/product-types.service';
 import { CategoryService } from './services/category.service';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 
@@ -41,7 +43,9 @@ import { CategoryService } from './services/category.service';
     //  HeaderComponent
         ForherComponent,
         ForhimComponent,
-        ProductDetailComponent
+        ProductDetailComponent,
+        SearchResultsComponent,
+        ShoppingCartComponent
     ],
     providers: [
         ForherService,

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CartService } from '../../services/cart.service';
-import { Globals } from '../../shared/api';
+import { CartService } from '../../../services/cart.service';
+import { Globals } from '../../../shared/api';
 import { Router } from '@angular/router';
 
 declare var $: any;

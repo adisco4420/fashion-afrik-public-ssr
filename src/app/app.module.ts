@@ -6,18 +6,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from './shared/shared.module';
-// custom modules
-import { MomentModule } from 'angular2-moment';
-import { TextMaskModule } from 'angular2-text-mask';
-// import { EcomProductZoomModalModule } from '@plency/ecom-product-zoom-modal';
 
-import { AppRoutingModule } from './app-routing.module';
+// import { EcomProductZoomModalModule } from '@plency/ecom-product-zoom-modal';
+import { CoreModule } from './components/Core/core.module';
 // api
 import { Globals } from './shared/api';
 // components
 import { AppComponent } from './app.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { StoreDetailComponent } from './components/store-detail/store-detail.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 
@@ -27,15 +22,13 @@ import { CurrencyService } from './services/currency.service';
 import { ExchangeRateService } from './services/exchange-rate.service';
 import { ProductTypesService } from './services/product-types.service';
 import { CategoryService } from './services/category.service';
-import { CoreModule } from './components/Core/core.module';
+
 
 @NgModule({
     declarations: [
         AppComponent,
         // LandingComponent,
         // FooterComponent,
-        ShoppingCartComponent,
-        SearchResultsComponent,
         StoreDetailComponent,
         WishlistComponent,
         NotFoundPageComponent,
@@ -49,8 +42,7 @@ import { CoreModule } from './components/Core/core.module';
         CoreModule,
         ReactiveFormsModule,
         SharedModule,
-        MomentModule,
-        TextMaskModule,
+
         // EcomProductZoomModalModule,
     ],
     providers: [Globals,
