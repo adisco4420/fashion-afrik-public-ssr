@@ -38,6 +38,8 @@ export class StoreDetailComponent implements OnInit {
 			 .subscribe(
 			 	data => {
                this.products = data.results;
+
+               console.log(this.products);
                this.storeParam =  t.snapshot.params['store'];
                 this.getStore(this.storeParam);
 

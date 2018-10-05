@@ -16,8 +16,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { Globals } from './shared/api';
 // components
 import { AppComponent } from './app.component';
-import { LandingComponent } from './components/landing/landing.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
@@ -33,21 +31,13 @@ import { CurrencyService } from './services/currency.service';
 import { ExchangeRateService } from './services/exchange-rate.service';
 import { ProductTypesService } from './services/product-types.service';
 import { CategoryService } from './services/category.service';
-
-
-
-
-
-
-
-
-
+import { CoreModule } from './components/Core/core.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        LandingComponent,
-        FooterComponent,
+        // LandingComponent,
+        // FooterComponent,
         ShoppingCartComponent,
         CheckoutComponent,
         SearchResultsComponent,
@@ -59,11 +49,12 @@ import { CategoryService } from './services/category.service';
         NotFoundPageComponent,
     ],
     imports: [
-        CommonModule,
-        AppRoutingModule,
+        // CommonModule,
+        // AppRoutingModule,
         HttpClientModule,
         HttpModule,
         FormsModule,
+        CoreModule,
         ReactiveFormsModule,
         SharedModule,
         MomentModule,

@@ -37,8 +37,15 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   t = localStorage;
   currencys: any[];
   exchange_rates: any[];
-  product: Object = {};
-  review: Object = {};
+  product: any = {
+    name: '',
+    sale_price: ''
+  };
+  review: any = {
+    name: '',
+    email: '',
+    comment: '',
+  };
   host_address: string = this.globals.HOST_URL;
   productItem: Object = {};
   cartForm: FormGroup;
@@ -61,7 +68,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   image: any;
   seoTitle: string;
 
-  private formSubmitAttempt: boolean;
+  public formSubmitAttempt: boolean;
 
   // images: EcomProductZoomModalImage[] = [{
   //   img: this.allImages['image'],

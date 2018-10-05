@@ -1,9 +1,10 @@
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 
-
+import { ILogin } from '../user.interface';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +13,20 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-
   loginForm: FormGroup;
   registerForm: FormGroup;
-  loginUser: Object = {};
-  registerUser: Object = {};
+   loginUser: any = {
+    email: '',
+    password: '',
+  };
+  registerUser: any = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    mobile: ''
+  };
   customer: Object = {};
   errorLogin: string;
   errorLoginT = false;
@@ -28,8 +38,8 @@ export class LoginComponent implements OnInit {
   @Output() notifyLogin: EventEmitter<Boolean> = new EventEmitter<Boolean>();
 
 
-  private loginAttempt: boolean;
-  private registerAttempt: boolean;
+   loginAttempt: boolean;
+   registerAttempt: boolean;
 
   constructor(fb: FormBuilder, private userSrv: UserService, private router: Router) {
     // let emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
