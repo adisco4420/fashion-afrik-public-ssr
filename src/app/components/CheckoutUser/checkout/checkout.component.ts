@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, Input, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { OrderService } from '../../services/order.service';
-import { UserService } from '../../services/user.service'
+import { OrderService } from '../../../services/order.service';
+import { UserService } from '../../../services/user.service'
 
-import { CurrencyService } from '../../services/currency.service';
-import { ExchangeRateService } from '../../services/exchange-rate.service';
+import { CurrencyService } from '../../../services/currency.service';
+import { ExchangeRateService } from '../../../services/exchange-rate.service';
 
 declare var $: any;
 

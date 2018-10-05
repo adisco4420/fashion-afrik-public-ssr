@@ -17,11 +17,7 @@ import { Globals } from './shared/api';
 // components
 import { AppComponent } from './app.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
-import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
-import { ShippingComponent } from './components/shipping/shipping.component';
-import { PaymentComponent } from './components/payment/payment.component';
 import { StoreDetailComponent } from './components/store-detail/store-detail.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 
@@ -39,11 +35,7 @@ import { CoreModule } from './components/Core/core.module';
         // LandingComponent,
         // FooterComponent,
         ShoppingCartComponent,
-        CheckoutComponent,
         SearchResultsComponent,
-        ConfirmationComponent,
-        ShippingComponent,
-        PaymentComponent,
         StoreDetailComponent,
         WishlistComponent,
         NotFoundPageComponent,

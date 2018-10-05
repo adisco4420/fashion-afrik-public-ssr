@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
-import { PaymentService } from '../../services/payment.service';
-import { CartService } from '../../services/cart.service';
+import { PaymentService } from '../../../services/payment.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-payment',

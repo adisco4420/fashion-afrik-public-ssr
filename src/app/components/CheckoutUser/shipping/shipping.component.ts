@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
-import { CountryService } from '../../services/country.service';
-import { ShippingService } from '../../services/shipping.service';
-import { CurrencyService } from '../../services/currency.service';
-import { OrderService } from '../../services/order.service';
+import { CountryService } from '../../../services/country.service';
+import { ShippingService } from '../../../services/shipping.service';
+import { CurrencyService } from '../../../services/currency.service';
+import { OrderService } from '../../../services/order.service';
 import { Router } from '@angular/router';
 
 @Component({
