@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { CategoryService } from '../../services/category.service';
-import { StoreService } from '../../services/store.service';
-import { ProductTypesService } from '../../services/product-types.service';
+import { ProductService } from '../../../services/product.service';
+import { CategoryService } from '../../../services/category.service';
+import { StoreService } from '../../../services/store.service';
+import { ProductTypesService } from '../../../services/product-types.service';
 
 
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import {FormBuilder,FormGroup, Validators} from '@angular/forms'
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import 'rxjs/add/operator/switchMap';
 
 

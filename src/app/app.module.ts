@@ -1,8 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from './shared/shared.module';
@@ -13,10 +13,9 @@ import { CoreModule } from './components/Core/core.module';
 import { Globals } from './shared/api';
 // components
 import { AppComponent } from './app.component';
-import { StoreDetailComponent } from './components/store-detail/store-detail.component';
 
 
-import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+
 import { CurrencyService } from './services/currency.service';
 import { ExchangeRateService } from './services/exchange-rate.service';
 import { ProductTypesService } from './services/product-types.service';
@@ -28,13 +27,12 @@ import { CategoryService } from './services/category.service';
         AppComponent,
         // LandingComponent,
         // FooterComponent,
-        StoreDetailComponent,
-        NotFoundPageComponent,
+        // NotFoundPage
     ],
     imports: [
         // CommonModule,
         // AppRoutingModule,
-        HttpClientModule,
+        // HttpClientModule,
         HttpModule,
         FormsModule,
         CoreModule,

@@ -10,7 +10,7 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
     FooterComponent, NotFoundPageComponent],
     exports: [ LandingComponent, FooterComponent, NotFoundPageComponent, AppRoutingModule, CommonModule],
     imports: [SharedModule, AppRoutingModule, CommonModule]
-}) 
+})
 
 
 export class CoreModule {}
