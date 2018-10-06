@@ -16,7 +16,8 @@
     margin-bottom: 20px
 }
 .img-men span{
-    font-weight: bold;
+    font-weight: 400;
+    text-transform: capitalize;
 }
 .card-footer span{
    font-size: 16px;
@@ -107,7 +108,7 @@ ul.new-arrival-container {
     margin-bottom: 45px;
     text-transform: uppercase;
     a {
-        font-weight: 700;
+        font-weight: 500;
         color: $site-blue;
         &.active {
             color: $site-accent;
