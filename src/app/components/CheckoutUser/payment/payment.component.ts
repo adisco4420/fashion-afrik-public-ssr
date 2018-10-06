@@ -1,9 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { PaymentService } from '../../../services/payment.service';
 import { CartService } from '../../../services/cart.service';
 
+declare var $: any;
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -46,6 +47,7 @@ export class PaymentComponent implements OnInit {
 
 
   ngOnInit() {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
 
     this.loadCart();
 
