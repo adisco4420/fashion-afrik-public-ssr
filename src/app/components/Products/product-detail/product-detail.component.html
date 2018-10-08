@@ -106,14 +106,52 @@
 						<p>
 							<b>Category : </b> {{product.l1category?.name}}</p>
 						<div class="row pull-left social-button">
-								<div class="col">
-									SHARE
+								<div class="col-md-12">
+									Share this
+								</div> 
+								<br>
+								<br>
+								<div class="col-2">
+										<!-- Facebook -->
+										<a href="http://www.facebook.com/sharer.php?u=http://vogueafriq.com/product/{{product.id}}/{{product.slug}}" target="_blank">
+											<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" 
+											style="width:35px;height:35px;"/>
+										</a>
+									
 								</div>
-								<div class="col">
-									<fb-like class="text-danger" url="https://vogueafriq.com"></fb-like>
+								<div class="col-2">
+										<!-- Twitter -->
+									<a href="https://twitter.com/share?url=http://vogueafriq.com/product/{{product.id}}/{{product.slug}}&amp;text={{product.name}}%20&amp;hashtags=vogueafriq" target="_blank">
+										<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" 
+										style="width:35px;height:35px;"/>
+									</a>
+									
 								</div>
-								<div class="col">
-										<tweet url="https://vogueafriq.com" text={{product.name}}></tweet>
+								<div class="col-2">
+									<!-- Email -->
+									<a href="mailto:?Subject={{product.name}}&amp;Body={{product.description}} http://vogueafriq.com/product/{{product.id}}/{{product.slug}}">
+										<img src="https://simplesharebuttons.com/images/somacro/email.png" style="width:35px;height:35px;" alt="Email" />
+									</a>
+								</div>
+								<div class="col-2">
+									    <!-- Google+ -->
+									<a href="https://plus.google.com/share?url=http://vogueafriq.com/product/{{product.id}}/{{product.slug}}" target="_blank">
+										<img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google"
+											style="width:35px;height:35px;"		/>
+									</a>
+								</div>
+								<div class="col-2">
+									    <!-- LinkedIn -->
+									<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://vogueafriq.com/product/{{product.id}}/{{product.slug}}" target="_blank">
+										<img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" 
+										style="width:35px;height:35px;"/>
+									</a>
+								</div>
+								<div class="col-2">
+									    <!-- Pinterest -->
+									<a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
+										<img src="https://simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" style="width:35px;height:35px;"/>
+									</a>
 								</div>
 						</div>
 
