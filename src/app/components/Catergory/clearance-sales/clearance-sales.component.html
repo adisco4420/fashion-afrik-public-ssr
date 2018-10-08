@@ -116,8 +116,9 @@
                        <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
                      </a>
                      <div class="card-footer text-center">
-                       <span class="prices"> {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span><br>
-                       <span class="name">{{item.name}}</span>          
+                        <span class="name">{{item.name}}</span> <br>
+                       <span class="prices"> {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
+                              
                      </div>
                    </div>     
                  </div>

@@ -8,8 +8,6 @@
           </li>
           <li data-slide-to="1" data-target="#carouselExampleIndicators">
           </li>
-          <li data-slide-to="2" data-target="#carouselExampleIndicators">
-          </li>
         </ol>
       
         <div class="carousel-inner">
@@ -86,7 +84,7 @@
                   <div class="" >
                       <div class="col-md-4 img-hover">
                         <h3 class="mb-text text-center"><i>For Her</i></h3>
-                         <a routerLink="/for-her"> <img src="../../../assets/img/forher.PNG" style="height:500px;width:350px;float: left;" alt="for her"></a>
+                         <a routerLink="/for-her"> <img src="https://i.imgur.com/d22aFPW.png" style="height:500px;width:350px;float: left;" alt="for her"></a>
                       </div>
                       <div class="col-md-2 bg-light  div-text" style="float:left;margin-top: 25%;padding: 40px 10px;min-width: 170px;">
                           <h6 >CLOTHING FOR ANY OCCASSION,</h6>
@@ -135,10 +133,11 @@
                    <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
                  </a>
                  <div class="card-footer text-center">
-                   <span class="price"> {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span><br>
+                    <span class="name">{{item.name}}</span> <br>
+                   <span class="price"> {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
                    <!-- <span class="price">{{ item.currency.code  }}  {{item.sale_price}}</span><br>
                    <span class="price">{{ item.currency.code  }}  {{item.sale_price}}</span><br> -->
-                   <span class="name">{{item.name}}</span> 
+                   
          
                  </div>
                </div>     
