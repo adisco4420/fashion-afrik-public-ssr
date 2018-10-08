@@ -112,6 +112,10 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       'chest': ['', Validators.required],
       'insideLegs': ['', Validators.required],
       'upperBodyLength': ['', Validators.required],
+      'fullName': ['', Validators.required],
+      'email': ['', Validators.required],
+      'phone': ['', Validators.required],
+      'address': ['', Validators.required],
     });
 
     $(function () {
@@ -185,7 +189,9 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
         });
 
     this.fetchCurrencys();
-    this.fetchExchangeRates()
+    this.fetchExchangeRates();
+    this.fetchFabrics();
+    // this.fetchColors();
     if (!localStorage.getItem('currency')) {
       localStorage.setItem('currency', 'GBP');
 
@@ -332,7 +338,25 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       console.log(data);
     }
   }
+  fetchFabrics(){
+    this.fabricSrv.fetchFabrics().subscribe( res =>{
+      this.fabrics = res.data;
+    }, err => {
+      console.log(err);
+    }
+    );
+  }
 
+  fetchColors(){
+    this.colorSrv.fetchColors().subscribe( res =>{
+      this.colors = res.data;
+      console.log(res);
+      console.log(this.colors);
+    }, err => {
+      console.log(err);
+    }
+    );
+  }
 
   goToAddReview() {
     $('html, body').animate({

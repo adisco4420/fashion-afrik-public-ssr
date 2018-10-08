@@ -14,8 +14,7 @@ export class ColorService {
   constructor(private http: Http, private globals: Globals) { }
 
   fetchColors(){
-  	  
-    return this.http.get(this.colorsUrl, )
+    return this.http.get(this.colorsUrl)
                 .map(this.extractData)
         .catch(this.handleErrorObservable);
   };

@@ -48,6 +48,7 @@ width: 100% !important;
 		font-weight: 700;
 		color: $site-blue;
 		margin-bottom: 10px;
+		text-transform: capitalize;
 	}
 
 	.price {
@@ -72,6 +73,9 @@ width: 100% !important;
 		}
 	}
 	}
+}
+.user-info ::placeholder{
+	font-size: 13px
 }
 
 section#product-description {
