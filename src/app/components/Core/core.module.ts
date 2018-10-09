@@ -7,6 +7,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { CommonModule } from '@angular/common';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
     declarations: [LandingComponent,
     FooterComponent, NotFoundPageComponent],
@@ -16,7 +17,9 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
         AppRoutingModule,
         CommonModule,
         HttpClientJsonpModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
     ]
 })
 

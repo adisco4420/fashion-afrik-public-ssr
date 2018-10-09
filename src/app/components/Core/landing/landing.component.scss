@@ -168,93 +168,6 @@ ul.new-arrival-container {
     }
 }
 
-$top-ranked-height: 400px;
-$toppers-height: $top-ranked-height/3.2;
-.top-ranked {
-    height: $top-ranked-height;
-    background: #eee;
-    .rank-1, .rank-2 {
-        // width: 100%;
-        height: $toppers-height;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-family: $primary-font;
-    }
-    .rank-3, .rank-4, .rank-5 {
-        // height: $top-ranked-height - ($toppers-height * 2);
-        height: 96.75px;
-        width: (100/3)+%;
-        float: left;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 12px;
-        font-family: $primary-font;
-    }
-    .rank-1 {
-            background: #303548;
-    color: #fff;
-    }
-    .rank-2 {
-            background: #1f2332;
-    color: #f8f9fa;
-    }
-    .rank-3 {
-        background: #303548;
-    color: #fff;
-    }
-    .rank-4 {
-            background: #1f2332;
-    color: #f8f9fa;
-    }
-    .rank-5 {
-       background: #303548;
-    color: #fff;
-    }
-}
-
-.rank {
-    // max-height: 50px;
-    padding: 10px 10px;
-    background: $site-accent;
-    color: #fff;
-    font-weight: 400;
-    font-size: 14px;
-    text-transform: uppercase;
-    // padding-left: 40px;
-    display: flex;
-    align-items: center;
-    word-spacing: 5px;
-    overflow: hidden;
-    &:nth-child(2) {
-        background: #303548;
-    }
-
-    &:nth-child(3) {
-        background: #1f2332;
-    }
-
-    &:nth-child(4) {
-        background: #303548;
-    }
-
-    &:nth-child(5) {
-        background: #1f2332;
-    }
-
-    &:nth-child(6) {
-        background: #303548;
-    }
-    span.center {
-        margin: 0 auto;
-    }
-    .text-left {
-        padding-left: 40px;
-    }
-}
 
 .dropdown-submenu {
     position: relative;
@@ -339,4 +252,29 @@ $toppers-height: $top-ranked-height/3.2;
         margin-top: 18px;
       
     }
+}
+form {
+    border: 3px solid #f1f1f1;
+    font-family: Arial;
+
+    margin: 2% 15%;
+}
+
+.containers {
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+input[type=text], input[type=submit] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+}
+
+input[type=checkbox] {
+    margin-top: 16px;
+}
+input[type=submit]:hover {
+    opacity: 0.8;
 }

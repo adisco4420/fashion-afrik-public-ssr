@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 // import { EcomProductZoomModalImage, EcomProductZoomModalService } from '@plency/ecom-product-zoom-modal';
 import { Title, Meta, TransferState, makeStateKey } from '@angular/platform-browser';
 
@@ -20,6 +20,7 @@ import { ExchangeRateService } from '../services/exchange-rate.service';
 
 declare var $: any;
 const STATE_KEY_NEWARRIVALS = makeStateKey('newArrival');
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -69,6 +70,9 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   seoTitle: string;
 
   public formSubmitAttempt: boolean;
+
+  @Input()
+  customer: Object = {};
 
   // images: EcomProductZoomModalImage[] = [{
   //   img: this.allImages['image'],
@@ -191,6 +195,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     this.fetchCurrencys();
     this.fetchExchangeRates();
     this.fetchFabrics();
+    this.getCustomer(); 
     // this.fetchColors();
     if (!localStorage.getItem('currency')) {
       localStorage.setItem('currency', 'GBP');
@@ -284,7 +289,9 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       event.preventDefault();
     }
   }
-
+  getCustomer() {
+    this.customer = JSON.parse(localStorage.getItem('customer'));
+  }
   addToCart(t) {
     this.formSubmitAttempt = true;
     if (this.cartForm.valid && this.product) {
@@ -332,7 +339,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     }
   };
 
-  saveCustomRequest(data) {
+  saveCustomRequest(data) { 
     this.customSubmitAttempt = true;
     if (this.customizeProductForm.valid) {
       console.log(data);

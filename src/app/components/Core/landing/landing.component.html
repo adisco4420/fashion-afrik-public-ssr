@@ -157,17 +157,42 @@
 </section>
 <section id="subscription" class="padded">
     <div class="container " >
-        <div class="text-center ">
+        <!-- <div class="text-center ">
             <h3 class="title">Get Updates</h3>
-            <!-- <p>Get email notifications on price slashes</p> <br> -->
-            <form class="form-inline d-flex justify-content-center" >
-              <div class="form-group mx-sm-3">
+         
+            <form class="form-inline d-flex justify-content-center" (ngSubmit)="submit()">
+                <div class="form-group mx-sm-3">
+                    <label for="name" class="sr-only">Name</label>
+                    <input type="text" [formControl]="nameControl" class="form-control mb-btn-sub" id="name" placeholder="Full name">
+                  </div>
+              <div class="form-group mx-sm-3"> 
                 <label for="email" class="sr-only">Email</label>
-                <input type="email" class="form-control mb-btn-sub" id="email" placeholder="email address">
+                <input type="email" [formControl]="emailControl" class="form-control mb-btn-sub" id="email" placeholder="email address">
               </div>
               <button type="submit" class="btn btn-warning ">Subscribe</button>
             </form>
         </div>
+      -->
+
+<form (ngSubmit)="submit()">
+  <div class="container containers">
+    <h2>Subscribe to our Newsletter</h2>
+    <p>Get excting update about how products and our new arrivals at half prices.</p>
+  </div>
+
+  <div class="container" style="background-color:white">
+    <input type="text" [formControl]="nameControl" placeholder="Name" name="name" required>
+    <input type="text"  [formControl]="emailControl" placeholder="Email address" name="mail" required>
+    <label>
+      <input type="checkbox" checked="checked" name="subscribe"> Daily Newsletter
+    </label>
+  </div>
+
+  <div class="container">
+    <input type="submit" class="btn-danger" value="Subscribe">
+  </div>
+</form>
+
     </div>
 </section>
 

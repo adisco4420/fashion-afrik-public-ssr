@@ -188,7 +188,7 @@
 					<div class="text-info alert alert-info" style="padding: 3px 20px">
 						<small>Enter values in inches</small>
 					</div>
-
+ 
 					<div class="row">
 						<div class="form-group col-sm-6">
 							<label for="fabric">Fabric</label>
@@ -259,7 +259,7 @@
 							 style="color: red">Upper body length is required</div>
 						</div>
 					</div>
-					<div class="row user-info">
+					<div class="row user-info" *ngIf="!customer">
 						<div class="col-sm-12">
 							<h5 class="boldest">User Details</h5>
 							<hr>

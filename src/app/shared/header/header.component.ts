@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
       localStorage.setItem('currency', 'GBP');
     }
 
-    this.getCustomer();
+    this.getCustomer(); 
     this.fetchCategories();
     this.fetchCurrencys();
     this.getCart();
