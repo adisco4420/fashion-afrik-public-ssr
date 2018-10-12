@@ -204,10 +204,10 @@
 						<div class="form-group col-sm-6">
 							<label for="">Color</label>
 							<select name="color" [formControl]="customizeProductForm.controls['color']">
-								<!-- <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option> -->
-								<option value="red">red</option>
+								<option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
+								<!-- <option value="red">red</option>
 								<option value="bue">blue</option>
-								<option value="green">green</option>
+								<option value="green">green</option> -->
 							</select>
 							<div *ngIf="customizeProductForm.controls['color'].hasError('required') && customSubmitAttempt" class="small form-error"
 							 style="color: red">Color is required</div>

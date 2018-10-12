@@ -414,12 +414,14 @@ select {
           display: inline-block;
           background-color: #011936;
           color: white;
-          padding: 10px 0px;
-          padding-left: 20px;
+          padding: 10px 0%;
+            nav b{
+                padding-right: 2%
+            }
           nav a{
               color: white;
-              font-size: 12px;
-              padding: 0px 3px;
+              font-size: 13px;
+              padding: 0px 6%;
           }
           nav .select-wrapper select {
               font-size: 13px;
@@ -437,6 +439,17 @@ select {
           min-width: 70px !important;
          
       }
+    //   .no-block .dropdown:hover>.dropdown-menu{
+    //       clear: both !important;
+    //       display: inline !important;
+    //   }
+    //   .no-block a{
+    //         display: inline !important;
+    //         clear: both !important;
+    //         padding: 0px !important;
+    //         margin: 0px !important;
+
+    //   }
 
     
     

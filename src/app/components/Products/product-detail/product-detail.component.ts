@@ -196,7 +196,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     this.fetchExchangeRates();
     this.fetchFabrics();
     this.getCustomer(); 
-    // this.fetchColors();
+     this.fetchColors();
     if (!localStorage.getItem('currency')) {
       localStorage.setItem('currency', 'GBP');
 

@@ -238,21 +238,6 @@ ul.new-arrival-container {
     display: none;
 }
 
-@media(max-width:500px){
-    .well{
-        display: none;
-    }
-    .div-text{
-        display: none;
-    }
-    .mb-text{
-        display: block;
-    }
-    .mb-btn-sub{
-        margin-top: 18px;
-      
-    }
-}
 form {
     border: 3px solid #f1f1f1;
     font-family: Arial;
@@ -277,4 +262,35 @@ input[type=checkbox] {
 }
 input[type=submit]:hover {
     opacity: 0.8;
+}
+
+// MOBILE STYLE
+@media(max-width:500px){
+    .con{
+        padding: 5%;
+    }
+    .well{
+        display: none;
+    }
+    .div-text{
+        display: none;
+    }
+    .mb-text{
+        display: block;
+    }
+    .mb-btn-sub{
+        margin-top: 18px;
+      
+    }
+    .container .carousel-inner{
+        height: 250px !important;
+    }
+    .for img{
+        width: 100% !important;
+        height: 280px !important;
+    }
+    .mb-img-men img{
+        height: 300px !important;
+        width: 100% !important;
+    } 
 }

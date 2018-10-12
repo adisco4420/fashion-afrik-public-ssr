@@ -64,3 +64,10 @@
     font-size: 16px;
     text-transform: capitalize;
   }
+  // MOBILE STYLE
+  @media(max-width:500px){
+    .con{
+        padding: 15% !important;
+    }
+
+}

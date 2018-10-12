@@ -20,17 +20,17 @@
 </header>
 <!-- MOBILE  -->
 <header class="mobile-head">
-  <nav>
-    <a target="_blank" href="http://stores.vogueafriq.com">Sell on vogueafriq</a>
+  <nav> 
+    <a target="_blank" href="http://stores.vogueafriq.com">Sell on VogueAfriq</a>
     <b><span class="greeting" *ngIf="customer; else login">Hi {{ customer?.first_name }}</span></b>
     <ng-template #login>
       <span class="greeting">
-        <a routerLink="/login">Login / Register</a>
+        <a routerLink="/login">Login/Register</a>
       </span>
     </ng-template>
     <span class="select-wrapper">
         <select name="currency" id="currency_selector" (change)="changeCurrency($event)" >
-          <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.name}}</option>
+          <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.code}}</option>
         </select>
       </span>
   </nav>
@@ -174,13 +174,13 @@
                     </form>                
             </li >
     
-              <ul class="navbar-nav "  >
+              <ul class="navbar-nav no-block"  >
       
                   <li class="nav-item ">
                     <a class="nav-link" [routerLink]="cart ? '/cart' : null" style="position: relative;">
                       <img src="/assets/img/carrt.png" alt="cart" style="height: 25px; width: 25px; "/>
                       <span *ngIf="cart?.length > 0" class="cart-bubble">{{cart?.length}}</span>
-                    </a>
+                    </a> 
                   </li>
           
                   <li class="nav-item dropdown avatar-dd" *ngIf="customer">

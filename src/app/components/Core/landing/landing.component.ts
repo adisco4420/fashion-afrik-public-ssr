@@ -39,6 +39,7 @@ export class LandingComponent implements OnInit , OnDestroy{
   error = '';
   emailControl: FormControl;
   nameControl: FormControl;
+  newsletterSubmit: boolean;
 
   constructor(
     private productSrv: ProductService,
@@ -48,7 +49,7 @@ export class LandingComponent implements OnInit , OnDestroy{
     private state: TransferState,
     private currencySrv: CurrencyService,
     private rateSrv: ExchangeRateService,
-    private http: HttpClient
+    private http: HttpClient,
         ) {
 
             // reactive form components
@@ -71,14 +72,16 @@ export class LandingComponent implements OnInit , OnDestroy{
     this.submit();
     
   }
+
   // mail chip
   submit() {
+    this.newsletterSubmit = true;
 		this.error = '';
 		if (this.emailControl.status === 'VALID' && this.nameControl.status === 'VALID') {
 			const params = new HttpParams()
 				.set('NAME', this.nameControl.value)
 				.set('EMAIL', this.emailControl.value)
-				.set('b_68c35c843530313a39249f623_83a66f7266', ''); // hidden input name
+				.set('fcba49cd42ba26c466b9bdbe8555151e-us19', ''); // hidden input name
 
 			const mailChimpUrl = this.mailChimpEndpoint + params.toString();
 

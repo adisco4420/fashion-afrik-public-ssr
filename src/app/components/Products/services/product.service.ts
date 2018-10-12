@@ -5,6 +5,10 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+
 
 @Injectable()
 export class ProductService {
@@ -101,7 +105,11 @@ export class ProductService {
       .map(this.extractData)
       .catch(this.handleErrorObservable);
   }
-
+  // search(data: Observable<string>) {
+  //   return data.debounceTime(400)
+  //     .distinctUntilChanged()
+  //     .switchMap(term => this.searchProduct(term));
+  // }
   searchProduct(data: string) {
     console.log(this.searchUrl + '?q=' + data);
     return this.http.get(this.searchUrl + '?q=' + data)
