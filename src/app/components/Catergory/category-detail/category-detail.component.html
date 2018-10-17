@@ -1,144 +1,103 @@
 <app-header ></app-header>
-<section class="padded">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3">
-        <!-- filter section -->
 
-        <div id="accordion" role="tablist">
-          <!-- start filter box -->
-          <div class="card">
-            <div class="card-header" role="tab" id="FilterTab">
-              <h5 class="mb-0">
-                <a class="boldest" data-toggle="collapse" href="#FilterTabPanel" aria-expanded="true" aria-controls="FilterTabPanel">
-                  Filter
-                </a>
-                <span class="icon float-right">
-                  <i class="ion-plus-round"></i>
-                </span>
-                <button class="btn btn-secondary btn-block filter-btn" (click)="applyFilter()">Apply</button>
-              </h5>
+<section class="padded con" >
+    <div id="wrapper"  >
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+           <div class="pad-filter">
+              <button id="menu-toggles"   class="btn btn-dark btn-sm pull-right"><span class="fa fa-close"></span></button>
+            <h5>Filter By Price</h5>
+            <hr>
+            <div class="price-range">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  under 100
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  100 - 300
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  300 - 500
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  500 - 1000
+                </label>
             </div>
-
-            <div id="FilterTabPanel" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body" style="padding-right: 15px;">
-                <ul class="nav flex-column">
-                  <!-- update filter button -->
-                  <div style="margin-bottom: 10px">
-                    <label>Price Range</label>
-                    <input type="text" class="range-slider" value="" />
-
-                  </div>
-                </ul>
+            <hr>
+            <h5>Filter By Color</h5>
+            <hr>
+              <div class="color-filter">
+                <select name="color" id="">
+                  <option value="red">Red</option>
+                  <option value="">blue</option>
+                </select>
               </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" role="tab" id="headingTwo">
-              <h5 class="mb-0">
-                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                  Product Type
-                </a>
-                <span class="icon float-right">
-                  <i class="ion-plus-round"></i>
-                </span>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <div *ngFor="let productType of productTypes">
-                      <label for="{{productType.slug}}">
-                        <input type="checkbox" id="{{productType.slug}}" value="{{productType.slug}}" (change)="addProductTypeFilter($event)"> &nbsp; {{productType.name}}
-                      </label>
-                    </div>
-                  </li>
-
-                </ul>
-              </div>
-            </div>
-          </div>
-
+           </div>
+    
         </div>
-      </div>
-      <div class="col-sm-7 offset-md-1 con">
-          <div class="row">
-              <div class="col-md-12 text-center">
-                <h2>Category</h2>
+    </div>
+  <div class="container con" >
+    <div class="row">
+              <div class="col-md-12 hed">
+                <h2>Category</h2>    
               </div>
-            </div>
-        <p style="font-size: 17px">
-          <b>{{products?.length || '0'}}</b> Item(s) found</p>
+              <div class="col-sm-12 row-ruler">
+                <div class="row ">
+                    <div class="col-sm-2 ">
+                        <button class="btn btn-primary btn-sm" href="#menu-toggle" class="btn btn-danger" id="menu-toggle">
+                            <span class="fa fa-sliders"></span> FITLER
+                        </button>
+                    </div>
+                    <div class="col-sm-7 text-center">
+                        <p style="font-size: 17px">
+                            <b>{{products?.length || '0'}}</b> Item(s) found
+                          </p>
+                    </div>
+                </div>
+              </div>
+
+    
         <div class="row">
-
-          <!-- <div class="col-md-6 col-lg-4" *ngFor="let product of products">
-            <div class="product-component text-center">
-              <div class="product-image">
-                <a routerLink="/product/{{product.id}}/{{product.slug}}">
-                  <img src="{{product.banner_image}}" alt="product image" class="img-fluid">
-                </a>
-              </div>
-              <div class="product-title">
-                <h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;">
-                  <a style="color: #011936" routerLink="/product/{{product.id}}/{{product.slug}}">{{product.name}}</a>
-                </h6>
-                <span class="text-center">
-                  <span>{{t.getItem('currency')}}</span>
-                  <b>{{product.sale_price / t.getItem('rate') |number}}</b>
-                </span>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <ul class="listing">
-            <li class="product" *ngFor="let product of products">
-              <a class="img-wrapper" routerLink="/product/{{product.id}}/{{product.slug}}">
-                <img src="{{product.banner_image}}" alt="{{product.slug}}" />
-              </a>
-              <div class="info">
-                <div class="title">{{product.name}}</div>
-                <div class="price">{{t.getItem('currency')}}{{product.sale_price / t.getItem('rate') | number}}</div>
-              </div>
-
-              <div class="actions-wrapper">
-                <a href="#" class="add-btn wishlist">Wishlist</a>
-                <a href="#" class="add-btn cart">Cart</a>
-              </div>
-            </li>
-          </ul> -->
-
-
+        
           <header>
            <div class="row img-men">
-              <div *ngIf="products?.length<1">
+              <div *ngIf="products?.length<1&&products">
                   <div class="col-md-12 text-center">
                     <img class="img-responsive" src="http://store.vijaidental.com/assets/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg" alt="">
                   </div>             
                 </div>
                 
-                <div class="row" *ngIf="products">
-                         <div class="col-md-6" *ngFor="let item of products">
+                <div class="row" *ngIf="products" >
+                         <div class="col-md-4" *ngFor="let item of products" >
                <div class="card" >
                  <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
                    <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
                  </a>
-                 <div class="card-footer text-center">
-                    <span class="name">{{item.name}}</span> <br>
-                   <span class="prices"> {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
-                           
+                 <div class="card-footer">
+                     
+                                 
+                                 <span class="prices"> {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
+
+                   <span class="wishlist fa fa-heart fa-2x" title="add to wishlist"></span>
+                   <br><br>
+                   <span class="name pull-left" >{{item.name}}</span>
                  </div>
                </div>     
              </div>
                 </div>
            </div>
-           <div *ngIf="!products&&products?.length>1" class="col-md-12 text-center">
+           <div *ngIf="!products" class="col-md-12 text-center">
              <img src="assets/gif/blue-spinner.gif" alt="">
              <h3>Loading .......</h3>
            </div>
          </header>
         </div>
-      </div>
+    
     </div>
+   
   </div>
+
 </section>

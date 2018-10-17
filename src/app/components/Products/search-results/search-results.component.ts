@@ -20,7 +20,9 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   routeSub: Subscription;
   searchClean: Subscription;
   sx: string;
-  productCheck: Object;
+  productCheck: any = {
+    length: ''
+  };
   constructor( private route: ActivatedRoute, private productSrv: ProductService, private router: Router) {
 
    }

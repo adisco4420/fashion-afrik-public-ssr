@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Title, Meta, TransferState, makeStateKey } from '@angular/platform-browser';
 import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
@@ -14,7 +14,7 @@ declare var $: any;
   templateUrl: './category-detail.component.html',
   styleUrls: ['./category-detail.component.scss'],
 })
-export class CategoryDetailComponent implements OnInit {
+export class CategoryDetailComponent implements OnInit, OnChanges {
   t = localStorage;
   products: any[];
   categorys: any[];
@@ -28,20 +28,25 @@ export class CategoryDetailComponent implements OnInit {
   theFilter: Object = {};
   error: any;
   seoTitle: string;
-
+  visibleCat: any[];
+  fiterCat: string;
+  filterBy = 'all';
 
   constructor(private productSrv: ProductService, private productTypeSrv: ProductTypesService,
     private categorySrv: CategoryService,
     private route: ActivatedRoute, private globals: Globals,
     private title: Title,
     private meta: Meta ,
-    private state: TransferState,) { }
+    private state: TransferState) { }
 
   ngOnInit() {
-
-    let t = this.route;
-    let productFilter = this.theFilter;
-    let a = this;
+    if (this.categorys) {
+      this.filterCategory(this.fiterCat);
+    }
+    this.filterCategory(this.fiterCat);
+    const t = this.route;
+    const productFilter = this.theFilter;
+    const a = this;
     this.route.params.switchMap((params: Params) =>
       this.productSrv.fetchProductsByCategory(params['category'], params['productType'], params['sub']))
       .subscribe(
@@ -53,10 +58,9 @@ export class CategoryDetailComponent implements OnInit {
           this.productType = t.snapshot.params['productType'];
           this.category = t.snapshot.params['category'];
           this.sub = t.snapshot.params['sub'];
-           console.log(this.category, this.productType, this.sub);
+         //  console.log(this.category, this.productType, this.sub);
            this.seoTitle = this.category + ' ' + this.productType +  ' '  + this.sub;
-           console.log(this.seoTitle);
-           
+        //   console.log(this.seoTitle);
           // console.log(this.products);
           a.fetchProductTypes(this.category);
           this.title.setTitle(this.seoTitle);
@@ -65,11 +69,18 @@ export class CategoryDetailComponent implements OnInit {
               'keyword': ' vogueafriq, africa, african fashion, nigerian fashion, owambe'
           });
         });
+        console.log(this.products);
         
-       
     this.fetchCategories();
-
-    $(".range-slider").ionRangeSlider({
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+  });
+  $("#menu-toggles").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+    $('.range-slider').ionRangeSlider({
       'type': 'double',
       onStart: function (data) {
         // console.log("onStart");
@@ -92,23 +103,25 @@ export class CategoryDetailComponent implements OnInit {
       // },2000);
     });
   }
-
+  ngOnChanges() {
+    if (this.categorys) {
+      this.filterCategory(this.fiterCat);
+    }
+  }
   addCategoryFilter(e) {
 
     let categoryFilter = this.categoryFilter;
     if (e.target.checked) {
       categoryFilter.push(e.target.value);
-      //remove currency from list
-      //this.currencys.remove(e.target.value);
+      // remove currency from list
+      // this.currencys.remove(e.target.value);
 
-    }
-    else {
+    } else {
 
       let index = categoryFilter.indexOf(e.target.value);
       if (index != -1) {
         categoryFilter.splice(index, 1);
       }
-
     }
     this.theFilter['categorys'] = categoryFilter;
 
@@ -150,7 +163,7 @@ export class CategoryDetailComponent implements OnInit {
 
           this.products = res.results;
         //  console.log(res);
-          
+
         //  console.log(this.products);
         }, err => {
 
@@ -175,14 +188,25 @@ export class CategoryDetailComponent implements OnInit {
       res => {
 
         this.categorys = res.data;
-        console.log(res);
-        
-         console.log(this.categorys);
+       // console.log(res);
+       //  console.log(this.categorys);
       }, err => {
 
         console.log(err);
       });
-
+  }
+  filterCategory(filter) {
+    this.visibleCat = this.products;
+    console.log('cat', this.visibleCat);
+    if (filter === 'all') {
+      this.visibleCat = this.products.slice(0);
+     // console.log('cat', this.visibleCat);
+    }
+    // } else {
+    //   this.visibleCat = this.products.filter(products => {
+    //     return products.l1category.name.toLowerCase()  === filter;
+    //   });
+    // }
   }
 
 }

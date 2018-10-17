@@ -64,7 +64,7 @@ export class ProductService {
       productTypes = a['productTypes'];
     }
     let min_price = '';
-    let max_price = ''
+    let max_price = '';
     if (a && a['minPrice'] && a['maxPrice']) {
       min_price = a['minPrice'];
       max_price = a['maxPrice'];
@@ -103,7 +103,7 @@ export class ProductService {
   }
 
   searchProduct(data: string) {
-    console.log(this.searchUrl + '?q=' + data);
+   // console.log(this.searchUrl + '?q=' + data);
     return this.http.get(this.searchUrl + '?q=' + data)
       .map(this.extractData)
       .catch(this.handleErrorObservable);
