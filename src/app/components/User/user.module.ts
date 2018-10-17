@@ -16,6 +16,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 // service
 import { OrderService } from './services/order.service';
 import { UserService } from './services/user.service';
+import { WishlistService } from './services/wishlist.service';
 
 
 
@@ -36,7 +37,8 @@ import { UserService } from './services/user.service';
   ],
   providers: [
     OrderService,
-    UserService
+    UserService,
+    WishlistService
   ]
 })
 export class UserModule { }

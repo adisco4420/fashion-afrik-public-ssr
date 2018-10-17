@@ -53,9 +53,18 @@ input {
         opacity: .7;
     }
 }
-.no-order {
+.emptystate-order {
     img{
         width: 100%
+    }
+    h4{
+        color: #FFC61E;
+        margin: 5px 0px;
+    }
+}
+.emptystate-wishlist {
+    img{
+        width: 55%
     }
     h4{
         color: #FFC61E;

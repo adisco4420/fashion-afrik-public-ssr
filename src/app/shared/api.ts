@@ -50,7 +50,7 @@ export class Globals{
     
     
     REVIEWS_URL =  this.HOST_URL + '/customers/reviews/';
-    
+    ADDTOWISHLIST_URL = this.HOST_URL + '/customers/addtowishlist';
     WISHLIST_URL =  this.HOST_URL + '/customers/wishlist/';
     
     FABRICS_URL =  this.HOST_URL + '/customers/fabrics/';

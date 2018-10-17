@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderService } from '../services/order.service';
 import { UserService } from '../services/user.service';
+import { WishlistService } from '../services/wishlist.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,13 +14,19 @@ export class UserProfileComponent implements OnInit {
 
   orders: any[] = [];
   customer: any = {};
+  wishlists: any[] = [];
 
-  constructor(private orderSrv: OrderService, private userSrv: UserService, private router: Router) { }
+  constructor(
+    private orderSrv: OrderService,
+    private wishlistSrv: WishlistService,
+    private userSrv: UserService,
+    private router: Router) { }
 
   ngOnInit() {
 
     this.fetchCustomer();
     this.fetchOrders();
+    this.fetchWishlist();
   }
 
   fetchOrders() {
@@ -31,7 +38,17 @@ export class UserProfileComponent implements OnInit {
     }, err => {
 
       console.log(err);
-    })
+    });
+  }
+  fetchWishlist() {
+    this.wishlistSrv.getWishlist().subscribe(res => {
+
+      this.wishlists = res.data;
+      console.log(this.wishlists);
+    }, err => {
+
+      console.log(err);
+    });
   }
 
   fetchCustomer() {
@@ -47,7 +64,7 @@ export class UserProfileComponent implements OnInit {
     }, err => {
       localStorage.clear();
       this.router.navigate(['/login']);
-    })
+    });
   }
 
 }

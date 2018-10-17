@@ -118,7 +118,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-8 text-center no-order" *ngIf="orders">
+							<div class="col-md-8 text-center emptystate-order" *ngIf="orders.length>1 || orders">
 								
 								<img src="https://cdn.dribbble.com/users/357929/screenshots/2276751/orderup-emptystate-sadbag.png" alt="no orders">
 								<h4>Your Order List Is Empty</h4>
@@ -127,7 +127,46 @@
 					</div>
 
 					<div class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-wishlist-tab">
-						Wishlist
+							<div class="row">
+									<div class="col-md-6" *ngFor="let wishlist of wishlists">
+										<div class="card">
+											<div class="card-header">
+												<div class="row">
+													<div class="col-md-8">
+														<p>Wishlist#: {{wishlist?.id}}</p>
+														<span>{{wishlist?.timestamp | date: 'mediumDate'}}</span>
+													</div>
+													<div class="col-md-4">
+														<p>Wishlist Status</p>
+														<span>{{wishlist?.order_status}}</span>
+													</div>
+												</div>
+											</div>
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-12">
+														<span>
+															<small style="position: relative; left: 5px;">{{wishlist?.items.length}} items</small>
+															<small style="color: #EB5757; float: right; margin-top: 5px; cursor: pointer; opacity: .9; position: relative; right: 10px;">view details</small>
+														</span>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="order-img">
+															<img [src]="" alt="">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 text-center emptystate-wishlist" *ngIf="wishlists.length>1 || wishlists">
+										
+										<img src="https://www.vakifzeytinleri.gov.tr/_assets/img/empty-cart.png" alt="no wishlist">
+										<h4>Your  Wishlist Is Empty</h4>
+									</div>
+								</div>
 					</div>
 
 
