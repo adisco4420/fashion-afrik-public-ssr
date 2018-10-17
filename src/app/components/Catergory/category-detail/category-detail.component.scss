@@ -37,7 +37,6 @@
   font-weight: bold;
   float: left;
   margin-top: -4%;
-
 }
 .card-footer .prices{
   color:  #FFC61E;
@@ -56,8 +55,17 @@
   // MOBILE STYLE
   @media(max-width:500px){
     .con{
-        padding: 15% !important;
+        padding: 5% !important;
+        margin-bottom: -5% !important;
     }
+    // .row-ruler{
+    //   .left{
+    //     float: left !important;
+    //   }
+    //   .right{
+    //     float: right !important;
+    //   }
+    // }
 
 }
 

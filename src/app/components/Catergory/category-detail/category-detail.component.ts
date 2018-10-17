@@ -179,10 +179,12 @@ export class CategoryDetailComponent implements OnInit, OnChanges {
        //  console.log(this.productTypes);
       }, err => {
 
-        console.log(err)
+        console.log(err);
       });
   }
-
+  addToCart() {
+    console.log('add to cart');
+  }
   fetchCategories() {
     this.categorySrv.fetchCategories().subscribe(
       res => {

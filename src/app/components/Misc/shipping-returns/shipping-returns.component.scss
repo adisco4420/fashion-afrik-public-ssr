@@ -79,7 +79,12 @@ br {
 .accordion {
 	margin-top: 40px;
 }
-
+@media(max-width:400px){
+	button{
+		font-size: 11px !important;
+		text-overflow: clip;
+	}
+}
 
 // ol { counter-reset: item }
 // li{ display: block }

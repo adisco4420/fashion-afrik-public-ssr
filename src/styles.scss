@@ -469,3 +469,9 @@ body {
     margin: 10% 40% !important;
 
 }
+// mobile style
+@media(max-width:500px){
+    .loader{
+        margin: 45% 20% !important;
+    }
+}

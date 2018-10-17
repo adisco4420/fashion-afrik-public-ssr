@@ -46,12 +46,12 @@
               </div>
               <div class="col-sm-12 row-ruler">
                 <div class="row ">
-                    <div class="col-sm-2 ">
+                    <div class="col-sm-2 left">
                         <button class="btn btn-primary btn-sm" href="#menu-toggle" class="btn btn-danger" id="menu-toggle">
                             <span class="fa fa-sliders"></span> FITLER
                         </button>
                     </div>
-                    <div class="col-sm-7 text-center">
+                    <div class="col-sm-7 text-center right">
                         <p style="font-size: 17px">
                             <b>{{products?.length || '0'}}</b> Item(s) found
                           </p>
@@ -73,8 +73,8 @@
            <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
          </a>
          <div class="card-footer">          
-              <span class="prices"> {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
-              <span class="wishlist fa fa-heart fa-2x" title="add to wishlist"></span>
+              <span class="prices" > {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
+              <span  (click)="addToCart()" class="wishlist fa fa-heart fa-2x" title="add to wishlist"></span>
              <br><br>
              <span class="name pull-left" >{{item.name}}</span>
           </div>

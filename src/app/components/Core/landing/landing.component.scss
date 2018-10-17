@@ -225,7 +225,6 @@ ul.new-arrival-container {
             font-size: 80%; 
         }
     }
-
     #top-header .inner {
         padding-left: 0 !important;
         padding-right: 0 !important;
@@ -267,7 +266,7 @@ input[type=submit]:hover {
 // MOBILE STYLE
 @media(max-width:500px){
     .con{
-        padding: 5%;
+        padding: 3%;
     }
     .well{
         display: none;
@@ -283,14 +282,23 @@ input[type=submit]:hover {
       
     }
     .container .carousel-inner{
-        height: 250px !important;
+        height: 280px !important;
     }
     .for img{
         width: 100% !important;
-        height: 280px !important;
+        height: 350px !important;
     }
     .mb-img-men img{
-        height: 300px !important;
+        height: 350px !important;
         width: 100% !important;
     } 
+    .containers{
+        padding: 0px !important;
+    }
+    #subscription{
+        form{
+            margin: 0px !important;
+    
+        }
+    }
 }
