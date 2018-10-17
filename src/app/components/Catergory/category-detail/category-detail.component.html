@@ -58,45 +58,38 @@
                     </div>
                 </div>
               </div>
-
-    
-        <div class="row">
-        
-          <header>
-           <div class="row img-men">
-              <div *ngIf="products?.length<1&&products">
-                  <div class="col-md-12 text-center">
-                    <img class="img-responsive" src="http://store.vijaidental.com/assets/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg" alt="">
-                  </div>             
-                </div>
-                
-                <div class="row" *ngIf="products" >
-                         <div class="col-md-4" *ngFor="let item of products" >
-               <div class="card" >
-                 <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
-                   <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
-                 </a>
-                 <div class="card-footer">
-                     
-                                 
-                                 <span class="prices"> {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
-
-                   <span class="wishlist fa fa-heart fa-2x" title="add to wishlist"></span>
-                   <br><br>
-                   <span class="name pull-left" >{{item.name}}</span>
-                 </div>
-               </div>     
-             </div>
-                </div>
-           </div>
-           <div *ngIf="!products" class="col-md-12 text-center">
-             <img src="assets/gif/blue-spinner.gif" alt="">
-             <h3>Loading .......</h3>
-           </div>
-         </header>
-        </div>
-    
+  </div>
+  <div class="img-men">
+    <div class="row">
+        <div class="col-md-12 text-center" *ngIf="products?.length<1&&products">
+              <img  src="http://store.vijaidental.com/assets/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg" alt="">           
+          </div>
     </div>
+        
+    <div class="row" *ngIf="products" >
+            <div class="col-md-4" *ngFor="let item of products" >
+       <div class="card" >
+         <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
+           <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
+         </a>
+         <div class="card-footer">          
+              <span class="prices"> {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
+              <span class="wishlist fa fa-heart fa-2x" title="add to wishlist"></span>
+             <br><br>
+             <span class="name pull-left" >{{item.name}}</span>
+          </div>
+          </div>     
+         </div>
+    </div>
+   <div class="row">
+      <div *ngIf="!products" class="col-md-12 text-center">
+          <img src="assets/gif/blue-spinner.gif" alt="">
+          <h3>Loading .......</h3>
+    </div>
+   </div>
+  </div>
+
+    
    
   </div>
 

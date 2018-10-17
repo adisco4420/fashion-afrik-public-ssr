@@ -157,7 +157,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       .subscribe(
         res => {
           this.product = res;
-          console.log(this.product);
+        //  console.log(this.product);
         //  console.log(this.product.name);
           this.seoTitle = this.product.name;
           const product_imgs = [];
@@ -187,7 +187,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
           this.description = this.product['description'];
           this.img_url = this.product['banner_image'];
           this.url = document.location.href;
-          console.log(this.allImages);
+        //  console.log(this.allImages);
         }, err => {
           console.log(err);
         });
@@ -202,49 +202,49 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
     }
 
-    $(function () {
+    // $(function () {
 
-      $('.slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        fade: true,
-        asNavFor: '.slider-nav'
-      });
-      $('.slider-nav').slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        // asNavFor: '.slider-for',
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true
-      });
-    });
+    //   $('.slider-for').slick({
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     arrows: true,
+    //     fade: true,
+    //     asNavFor: '.slider-nav'
+    //   });
+    //   $('.slider-nav').slick({
+    //     slidesToShow: 5,
+    //     slidesToScroll: 1,
+    //     // asNavFor: '.slider-for',
+    //     dots: false,
+    //     centerMode: true,
+    //     focusOnSelect: true
+    //   });
+    // });
   }
 
-  ngAfterViewInit() {
-    $(function () {
+  // ngAfterViewInit() {
+  //   $(function () {
 
-      $('.slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        fade: true,
-        asNavFor: '.slider-nav'
-      });
-      $('.slider-nav').slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        // asNavFor: '.slider-for',
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true
-      });
-    });
-  }
+  //     $('.slider-for').slick({
+  //       slidesToShow: 1,
+  //       slidesToScroll: 1,
+  //       arrows: true,
+  //       fade: true,
+  //       asNavFor: '.slider-nav'
+  //     });
+  //     $('.slider-nav').slick({
+  //       slidesToShow: 5,
+  //       slidesToScroll: 1,
+  //       // asNavFor: '.slider-for',
+  //       dots: false,
+  //       centerMode: true,
+  //       focusOnSelect: true
+  //     });
+  //   });
+  // }
 
   viewImage(_image) {
-    console.log(_image);
+  //  console.log(_image);
     this.image = _image;
   }
 
@@ -265,7 +265,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     this.rateSrv.fetchRates().subscribe(res => {
 
       this.exchange_rates = res.data;
-       console.log(this.exchange_rates);
+     //  console.log(this.exchange_rates);
       const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
       localStorage.setItem('rate', selected_currency.rate);
     }, err => {
@@ -342,7 +342,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   saveCustomRequest(data) { 
     this.customSubmitAttempt = true;
     if (this.customizeProductForm.valid) {
-      console.log(data);
+    //  console.log(data);
     }
   }
   fetchFabrics(){
@@ -357,8 +357,8 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   fetchColors(){
     this.colorSrv.fetchColors().subscribe( res =>{
       this.colors = res.data;
-      console.log(res);
-      console.log(this.colors);
+    //  console.log(res);
+    //  console.log(this.colors);
     }, err => {
       console.log(err);
     }
