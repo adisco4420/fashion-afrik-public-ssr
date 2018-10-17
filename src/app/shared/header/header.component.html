@@ -19,7 +19,7 @@
   </div>
 </header>
 <!-- MOBILE  -->
-<header class="mobile-head">
+<header class="mobile-head"> 
   <nav> 
     <a target="_blank" href="http://stores.vogueafriq.com">Sell on VogueAfriq</a>
     <b><span class="greeting" *ngIf="customer; else login">Hi {{ customer?.first_name }}</span></b>
@@ -189,8 +189,8 @@
                     </a>
                     <div class="dropdown-menu pro-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" routerLink="/me">Profile</a>
-                      <a class="dropdown-item" routerLink="">Orders</a>
-                      <a class="dropdown-item" routerLink="">Wishlist</a>
+                      <a class="dropdown-item" routerLink="/me">Orders</a>
+                      <a class="dropdown-item" routerLink="/me">Wishlist</a>
                       <a class="dropdown-item" (click)="logout()">Log out</a>
                     </div>
                   </li>
