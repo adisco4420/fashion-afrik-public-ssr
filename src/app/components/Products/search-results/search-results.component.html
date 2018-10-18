@@ -1,15 +1,26 @@
 <app-header ></app-header>
-<section class="padded">
+<!--<section class="padded">
   <div class="container">
+    <div class="row">
+      <div class="col-md-3 pull-right offset-md-9">
+          
+      <div id="demo-2" class="md-form mt-0 ">
+          <input class="form-control" #search (keyup.enter)="searchProducts(search.value)" type="search" placeholder="Search" aria-label="Search">
+        </div>
+        
+    </div>
+    </div>
     <div class="row" style="padding: 0 15px;">
-      <div class="col-md-12">
-        <h3 class="boldest">
-          You searched for "{{ sx}}"
+ 
+      <div class="col-md-8 pull-left">
+        <h3 class="boldest">  
+              You searched for "{{ sxs}}  {{sx}}"
         </h3>
         <p style="font-size: 17px"><b>{{search_results?.length|number}}</b> Items found</p>
       </div>
+      
     </div>
-  </div>
+  </div> -->
 
 
     <!-- <div class="col-md-4 newArrival-container" *ngFor="let item of search_results" style="text-align: center; color: #E9585B; margin-bottom: 25px;">
@@ -26,28 +37,28 @@
     </div> -->
 
 
-<div class="container">
-  <div class="row " *ngIf="productCheck?.length>1" >
-    <div class="col-md-4"  *ngFor="let item of productCheck">
+<!-- <div class="container">
+
+  <div class="row " *ngIf="search_results?.length>1" >
+    
+    <div class="col-md-4"  *ngFor="let item of search_results">
      <div class="card" >
        <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
          <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} style="width: 100%" >
        </a>
        <div class="card-footer text-center">
           <span class="name">{{item.name}}</span> <br>
-         <span class="price">{{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
-         
+         <span class="price">{{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>    
        </div>
      </div>   
    </div>
- 
  </div>
  <div *ngIf="productCheck?.length<1" class="row ">
   <div class="col-md-12 text-center">
     <img class="img-responsive" src="http://store.vijaidental.com/assets/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg" alt="">
   </div>
  </div>  
-</div>
+</div> -->
   
 <!-- <p>Search for {{ sx}}</p> -->
 
@@ -84,4 +95,109 @@
       </div>
     </div>
   </div> -->
+
+
+<section class="padded con" >
+    <div id="wrapper"  >
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+           <div class="pad-filter">
+              <button id="menu-toggles"   class="btn btn-dark btn-sm pull-right"><span class="fa fa-close"></span></button>
+            <h5>Filter By Price</h5>
+            <hr>
+            <div class="price-range">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  under 1000
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  1000 - 3000
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  3000 - 5000
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  5000 - 10000
+                </label>
+            </div>
+            <hr>
+            <h5>Filter By Color</h5>
+            <hr>
+              <div class="color-filter">
+                <select name="color" id="">
+                  <option value="red">Red</option>
+                  <option value="">blue</option>
+                </select>
+              </div>
+           </div>
+    
+        </div>
+    </div>
+  <div class="container con" >
+    <!-- Search form -->
+
+    <div class="row">
+                  <div class="col-md-3 pull-right offset-md-9">
+                        <!-- Search form -->
+                  <div id="demo-2" class="md-form mt-0 ">
+                      <input class="form-control" #search (keyup.enter)="searchProducts(search.value)" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+                    
+                </div>
+              
+              <div class="col-sm-12 row-ruler">
+                <div class="row ">
+                    <div class="col-sm-2 left">
+                        <button class="btn btn-primary btn-sm" href="#menu-toggle" class="btn btn-danger" id="menu-toggle">
+                            <span class="fa fa-sliders"></span> FITLER
+                        </button>
+                    </div>
+                    <div class="col-sm-6 text-center text-capitalize">
+                      <h5> You searched for "{{ sxs}}  {{sx}}"</h5>
+                    </div>
+                    <div class="col-sm-4 text-center right">
+                        <p style="font-size: 17px">
+                            <b>{{search_results?.length || '0'}}</b> Item(s) found
+                          </p> 
+                    </div>
+                </div>
+              </div>
+  </div>
+  <div class="img-men">
+    <div class="row">
+        <div class="col-md-12 text-center" *ngIf="search_results?.length<1&&search_results">
+              <img  src="http://store.vijaidental.com/assets/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg" alt="">           
+          </div>
+    </div>
+        
+    <div class="row" *ngIf="search_results" >
+            <div class="col-md-4" *ngFor="let item of search_results" >
+       <div class="card" >
+         <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
+           <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
+         </a>
+         <div class="card-footer">          
+              <span #pricelog class="prices" > {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
+              <span   class="wishlist fa fa-heart fa-2x" title="add to wishlist"></span>
+             <br><br>
+             <span class="name pull-left" >{{item.name}}</span>
+          </div>
+          </div>     
+         </div>
+    </div>
+   <div class="row">
+      <div *ngIf="!search_results" class="col-md-12 text-center">
+          <img src="assets/gif/blue-spinner.gif" alt="">
+          <h3>Loading .......</h3>
+    </div>
+   </div>
+  </div>
+
+    
+   
+  </div>
+
 </section>

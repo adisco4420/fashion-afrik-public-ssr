@@ -95,7 +95,7 @@ export class PaymentComponent implements OnInit {
 
           data['amount'] = this.amount;
           data['order_id'] = this.order_id;
-          data['currency'] = this.currency
+          data['currency'] = this.currency;
           data['tx_id'] = response.id;
 
           this.paymentSrv.makePayment(data).subscribe(res => {
@@ -108,7 +108,7 @@ export class PaymentComponent implements OnInit {
           }, err => {
             this.errorCardDetail = true;
             console.log(err);
-          })
+          });
         } else {
           this.errMessage = response.error.message;
           console.log(response.error.message);

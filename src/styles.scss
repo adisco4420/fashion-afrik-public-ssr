@@ -437,41 +437,41 @@ body {
   .lds-ellipsis div:nth-child(1) div {
     -webkit-animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
     animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-    background: #141e44;
+    background: #1c53a1;
   }
   .lds-ellipsis div:nth-child(2) div {
     -webkit-animation-delay: -0.65s;
     animation-delay: -0.65s;
-    background: #2e0e9d;
+    background: #115aa3;
   }
   .lds-ellipsis div:nth-child(3) div {
     -webkit-animation-delay: -0.325s;
     animation-delay: -0.325s;
-    background: #376888;
+    background: #1d5363;
   }
   .lds-ellipsis div:nth-child(4) div {
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
-    background: #123b48;
+    background: #337ab7;
   }
   .lds-ellipsis div:nth-child(5) div {
     -webkit-animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
     animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-    background: #141e44;
+    background: #1c53a1;
   }
   .lds-ellipsis {
-    width: 200px !important;
-    height: 200px !important;
-    -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
-    transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+    width: 150px !important;
+    height: 150px !important;
+    -webkit-transform: translate(-75px, -75px) scale(0.75) translate(75px, 75px);
+    transform: translate(-75px, -75px) scale(0.75) translate(75px, 75px);
   }
   .loader{
-    margin: 10% 40% !important;
+    margin: 15% 40% !important;
 
 }
 // mobile style
 @media(max-width:500px){
     .loader{
-        margin: 45% 20% !important;
+        margin: 40% 20% !important;
     }
 }

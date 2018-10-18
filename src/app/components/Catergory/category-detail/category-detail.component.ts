@@ -7,6 +7,7 @@ import { Globals } from '../../../shared/api';
 import { ProductService } from '../services/product.service';
 import { ProductTypesService } from '../services/product-types.service';
 import { CategoryService } from '../services/category.service';
+import { Subscription } from 'rxjs';
 declare var $: any;
 
 @Component({
@@ -31,6 +32,8 @@ export class CategoryDetailComponent implements OnInit, OnChanges {
   visibleCat: any[];
   fiterCat: string;
   filterBy = 'all';
+  search_results: any[];
+  searchClean: Subscription;
 
   constructor(private productSrv: ProductService, private productTypeSrv: ProductTypesService,
     private categorySrv: CategoryService,
@@ -182,8 +185,18 @@ export class CategoryDetailComponent implements OnInit, OnChanges {
         console.log(err);
       });
   }
-  addToCart() {
+  searchProducts(search) {
+    console.log(search);
+    this.searchClean = this.productSrv.searchProduct(search).subscribe(res => {
+      this.search_results = res.results;
+      console.log(this.search_results);
+    }, err => {
+        console.log(err);
+    });
+  }
+  addToWishlist(text) {
     console.log('add to cart');
+    console.log(text);
   }
   fetchCategories() {
     this.categorySrv.fetchCategories().subscribe(

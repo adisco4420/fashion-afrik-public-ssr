@@ -32,7 +32,8 @@ export class HeaderComponent implements OnInit {
   selectedProductType: any;
   error: any;
   x: any;
-
+  rot: any;
+  searchrot: any;
   filterProduct: Subscription;
 
   @Input()
@@ -47,8 +48,11 @@ export class HeaderComponent implements OnInit {
     if (!localStorage.getItem('currency')) {
       localStorage.setItem('currency', 'GBP');
     }
-
-    this.getCustomer(); 
+    this.rot = this.router.url;
+    this.searchrot = this.rot.includes('search');
+   // console.log(this.router.url);
+  //  console.log(this.rot.includes('search'));
+    this.getCustomer();
     this.fetchCategories();
     this.fetchCurrencys();
     this.getCart();
@@ -145,7 +149,7 @@ export class HeaderComponent implements OnInit {
     this.rateSrv.fetchRates().subscribe(res => {
 
       this.exchange_rates = res.data;
-       console.log(this.exchange_rates);
+     //  console.log(this.exchange_rates);
       const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
       localStorage.setItem('rate', selected_currency.rate);
     }, err => {
@@ -155,9 +159,10 @@ export class HeaderComponent implements OnInit {
   }
 
   searchProduct(x: string) {
-    const query  = x;
-    console.log(query);
-     this.router.navigate(['/search',   {q: query} ]);
+    const querys  = x;
+    console.log(querys);
+     this.router.navigate(['/search',   {q: querys} ]);
+    // this.router.navigate(['/search'], { queryParams: { q: querys } });
         // this.productSrv.searchProduct(query)
         // .subscribe(res => { this.searched = res.results})
         // console.log(this.searched);

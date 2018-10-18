@@ -32,28 +32,15 @@ footer .social-icon .col-md-3{
 		margin-right: 50px;
 
 		&:last-of-type {
-			margin-right: 0;
+			margin-right: 0; 
 		}
 	}
 }
-
-#subscription {
-	padding: 60px;
-	.title {
-		font-weight: 700;
-		font-size: 20px;
-		margin-bottom: 20px;
+@media(max-width:400px){
+	#partners {
+		img {
+			margin: 0px  15px !important;	
+		}
 	}
-
-	input {
-		border: 0;
-		padding: 12px 20px;
-	}
-	button {
-		background: $site-accent;
-		font-weight: 700;
-		color: #fff;
-		border: 0;
-		padding: 12px 20px;
-	}
+	
 }
