@@ -9,7 +9,7 @@
             <h5>Filter By Price</h5>
             <hr>
             <div class="price-range">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <!-- <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                 <label class="form-check-label" for="defaultCheck1">
                   under 100
                 </label><br>
@@ -24,16 +24,34 @@
                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                 <label class="form-check-label" for="defaultCheck1">
                   500 - 1000
-                </label>
+                </label> -->
+                <div *ngFor="let price of priceTypes">
+                  <input type="checkbox" [(ngModel)]="price.selected" /> {{price.value}}
+                </div>
+
             </div>
             <hr>
             <h5>Filter By Color</h5>
             <hr>
               <div class="color-filter">
-                <select name="color" id="">
+                <!-- <select name="color" id="">
                   <option value="red">Red</option>
                   <option value="">blue</option>
-                </select>
+                </select> -->
+                <!-- <select name="color">
+                  <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
+                </select> -->
+
+                <!-- <div *ngFor="let color of colorTypes">
+                  <input type="checkbox" [(ngModel)]="color.selected" /> {{color.name}}
+                </div> -->
+                <div *ngFor="let color of colorTypes" class="btn-group"  data-toggle="toggle">
+                  <label class={{color.bg}}  > 
+                    <input type="checkbox" [(ngModel)]="color.selected"  >
+                    <!-- <span class="fa fa-check" ></span> -->
+                  </label>     
+                </div>
+                
               </div>
            </div>
     
@@ -72,16 +90,16 @@
     </div>
         
     <div class="row" *ngIf="products" >
-            <div class="col-md-4" *ngFor="let item of products" >
-       <div class="card" >
+            <div class="col-md-4" *ngFor="let item of products | colorType: selectedColorTypes | priceType: selectedPriceTypes" >
+       <div class="card" #nameWishlist >
          <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
-           <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
+           <img class="img-responsive" #imgWishlist src={{item.feature_image}} alt={{item.name}} >
          </a>
          <div class="card-footer">          
-              <span #pricelog class="prices" > {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
-              <span  (click)="addToWishlist(pricelog.innerText)" class="wishlist fa fa-heart fa-2x" title="add to wishlist"></span>
+              <span class="prices" > {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}</span>
+              <span  (click)="addToWishlist(nameWishlist.innerText,imgWishlist.src)" class="wishlist fa fa-heart fa-2x" title="add to wishlist"></span>
              <br><br>
-             <span class="name pull-left" >{{item.name}}</span>
+             <span  class="name pull-left" >{{item.name}}</span>
           </div>
           </div>     
          </div>

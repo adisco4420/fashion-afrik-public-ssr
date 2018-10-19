@@ -176,3 +176,19 @@
     margin-right: 0;
   }
 }
+.btn-group .btn span.fa {    			
+	opacity: 0;				
+}
+// .btn-group .btn span.fa {				
+// 	opacity: 1;				
+// }
+.btn-group input[type="checkbox"]{
+  opacity: 0;
+}
+.btn-group input[type="checkbox"]:checked{
+  width:20px;
+  height: 20px;
+  background-color: white;
+  color: aqua;
+  opacity: 0.7;
+}

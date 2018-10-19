@@ -15,6 +15,8 @@ import { CategoryService } from './services/category.service';
 import { ClearanceSalesComponent } from './clearance-sales/clearance-sales.component';
 import { NewArrivalsComponent } from './new-arrivals/new-arrivals.component';
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
+import { ColorService } from '../../services/color.service';
+import { ColorTypePipe , PriceTypePipe} from '../../filter/filter.pipe';
 
 
 
@@ -31,11 +33,14 @@ import { CategoryDetailComponent } from './category-detail/category-detail.compo
     //  HeaderComponent
       ClearanceSalesComponent,
       NewArrivalsComponent,
-      CategoryDetailComponent
+      CategoryDetailComponent,
+      ColorTypePipe,
+      PriceTypePipe
     ],
     providers: [
         ProductService,
         ProductTypesService,
-        CategoryService]
+        CategoryService,
+        ColorService]
   })
   export class CatergorysModule { }

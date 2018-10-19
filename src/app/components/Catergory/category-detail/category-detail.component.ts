@@ -8,6 +8,8 @@ import { ProductService } from '../services/product.service';
 import { ProductTypesService } from '../services/product-types.service';
 import { CategoryService } from '../services/category.service';
 import { Subscription } from 'rxjs';
+import { ColorService } from '../../../services/color.service';
+
 declare var $: any;
 
 @Component({
@@ -34,18 +36,53 @@ export class CategoryDetailComponent implements OnInit, OnChanges {
   filterBy = 'all';
   search_results: any[];
   searchClean: Subscription;
+  colors: any[];
 
-  constructor(private productSrv: ProductService, private productTypeSrv: ProductTypesService,
+  colorTypes = [
+    { name: 'red', selected: false, bg: 'btn btn-danger'},
+    { name: 'yellow', selected: false, bg: 'btn btn-warning' },
+    { name: 'grey', selected: false,  bg: 'btn btn-secondary'},
+    { name: 'black', selected: false,  bg: 'btn btn-dark'},
+    { name: 'blue', selected: false,  bg: 'btn btn-primary'},
+    { name: 'brown', selected: false,  bg: 'btn btn-info'},
+  ];
+
+  priceTypes = [
+    { name: 6250, selected: false , value: '10 -20'},
+    { name: 10000, selected: false , value: '20 -30'},
+    { name: 7500, selected: false , value: '30 - 40'}
+  ];
+
+  constructor(
+    private productSrv: ProductService,
+    private productTypeSrv: ProductTypesService,
     private categorySrv: CategoryService,
+    private colorSrv: ColorService,
     private route: ActivatedRoute, private globals: Globals,
     private title: Title,
     private meta: Meta ,
     private state: TransferState) { }
-
+    get selectedColorTypes() {
+      return this.colorTypes.reduce((types, type) => {
+        if (type.selected) {
+          types.push(type.name);
+        }
+        return types;
+      }, []);
+    }
+    get selectedPriceTypes() {
+      return this.priceTypes.reduce((types, type) => {
+        if (type.selected) {
+          types.push(type.name);
+        }
+        return types;
+      }, []);
+    }
   ngOnInit() {
     if (this.categorys) {
       this.filterCategory(this.fiterCat);
     }
+    this.fetchColors();
     this.filterCategory(this.fiterCat);
     const t = this.route;
     const productFilter = this.theFilter;
@@ -56,6 +93,13 @@ export class CategoryDetailComponent implements OnInit, OnChanges {
         res => {
 
           this.products = res.results;
+          // console.log(res.results[0].colors[0].slug);
+          this.products.forEach(item => {
+            console.log(item.sale_price);
+            if (item.sale_price <= 9000) {
+              console.log('within 9000', item.sale_price);
+            }
+          });
           console.log(this.products);
 
           this.productType = t.snapshot.params['productType'];
@@ -73,12 +117,16 @@ export class CategoryDetailComponent implements OnInit, OnChanges {
           });
         });
         console.log(this.products);
-        
     this.fetchCategories();
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
   });
+//   $('.fa-check').click(function(e) {
+//     console.log('btn click');
+//     e.preventDefault();
+//     $('.fa').toggleClass('.tog');
+// });
   $("#menu-toggles").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
@@ -173,7 +221,12 @@ export class CategoryDetailComponent implements OnInit, OnChanges {
           console.log(err);
         });
   }
-
+  fetchColors() {
+    this.colorSrv.fetchColors().subscribe(res => {
+      this.colors = res.data;
+      console.log(this.colors );
+    });
+  }
   fetchProductTypes(pt) {
     this.productTypeSrv.fetchProductTypes(pt).subscribe(
       res => {
@@ -185,18 +238,10 @@ export class CategoryDetailComponent implements OnInit, OnChanges {
         console.log(err);
       });
   }
-  searchProducts(search) {
-    console.log(search);
-    this.searchClean = this.productSrv.searchProduct(search).subscribe(res => {
-      this.search_results = res.results;
-      console.log(this.search_results);
-    }, err => {
-        console.log(err);
-    });
-  }
-  addToWishlist(text) {
+
+  addToWishlist(nameWishlist, imgWishlist) {
     console.log('add to cart');
-    console.log(text);
+    console.log(nameWishlist, imgWishlist);
   }
   fetchCategories() {
     this.categorySrv.fetchCategories().subscribe(

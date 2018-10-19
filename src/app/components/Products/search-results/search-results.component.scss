@@ -86,6 +86,7 @@ input::-webkit-input-placeholder {
 #demo-2 input::-webkit-input-placeholder {
 	color: transparent;
 }
+// from filter
 
 .hed h2{
     font-family: serif;
@@ -157,7 +158,13 @@ input::-webkit-input-placeholder {
   
   }
   
- body {
+  /*!
+   * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+   * Copyright 2013-2017 Start Bootstrap
+   * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+   */
+  
+   body {
     overflow-x: hidden;
   }
   .pad-filter{
@@ -258,3 +265,4 @@ input::-webkit-input-placeholder {
       margin-right: 0;
     }
   }
+  
