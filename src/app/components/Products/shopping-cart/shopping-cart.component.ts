@@ -12,7 +12,7 @@ declare var $: any;
   providers: [CartService]
 })
 export class ShoppingCartComponent implements OnInit {
-  t = localStorage;
+  t: any = localStorage;
   cart: any = [];
   host_address: string = this.globals.HOST_URL;
   constructor(private cartSrv: CartService, private router: Router, private globals: Globals) { }

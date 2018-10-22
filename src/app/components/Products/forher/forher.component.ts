@@ -56,7 +56,7 @@ export class ForherComponent implements OnInit {
         res => {
 
           this.products = res.results;
-          console.log(this.products);
+        //  console.log(this.products);
 
           this.productType = t.snapshot.params['productType'];
           this.category = t.snapshot.params['category'];
@@ -96,7 +96,7 @@ export class ForherComponent implements OnInit {
     this.forHerSrv.fetchForHer().subscribe(
       res => {
         this.forher = res.results;
-        console.log(res.results);
+      //  console.log(res.results);
       }, err => {
         console.log(err);
       }
@@ -184,9 +184,8 @@ export class ForherComponent implements OnInit {
       res => {
 
         this.categorys = res.data;
-        console.log(res);
-        
-         console.log(this.categorys);
+      //  console.log(res);
+      //   console.log(this.categorys);
       }, err => {
 
         console.log(err);

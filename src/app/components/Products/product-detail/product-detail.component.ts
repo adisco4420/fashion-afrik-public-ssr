@@ -114,7 +114,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       'collar': ['', Validators.required],
       'waist': ['', Validators.required],
       'chest': ['', Validators.required],
-      'insideLegs': ['', Validators.required],
+      'insideLegs' : ['', Validators.required],
       'upperBodyLength': ['', Validators.required],
       'fullName': ['', Validators.required],
       'email': ['', Validators.required],
@@ -225,21 +225,21 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     $(function () {
 
-      $('.slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        fade: true,
-        asNavFor: '.slider-nav'
-      });
-      $('.slider-nav').slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        // asNavFor: '.slider-for',
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true
-      });
+      // $('.slider-for').slick({
+      //   slidesToShow: 1,
+      //   slidesToScroll: 1,
+      //   arrows: true,
+      //   fade: true,
+      //   asNavFor: '.slider-nav'
+      // });
+      // $('.slider-nav').slick({
+      //   slidesToShow: 5,
+      //   slidesToScroll: 1,
+      //   // asNavFor: '.slider-for',
+      //   dots: false,
+      //   centerMode: true,
+      //   focusOnSelect: true
+      // });
     });
   }
 
@@ -342,7 +342,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   saveCustomRequest(data) {
     this.customSubmitAttempt = true;
     if (this.customizeProductForm.valid) {
-      console.log(data);
+        console.log(data);
     }
   }
   fetchFabrics(){
@@ -353,7 +353,6 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     }
     );
   }
-
   fetchColors(){
     this.colorSrv.fetchColors().subscribe( res =>{
       this.colors = res.data;

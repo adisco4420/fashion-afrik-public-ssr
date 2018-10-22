@@ -83,7 +83,7 @@ export class ForhimComponent implements OnInit {
     this.forHimSrv.fetchForHim().subscribe(
       res => {
         this.forhim = res.results;
-        console.log(res.results);
+      //  console.log(res.results);
       }, err => {
         console.log(err);
       }
