@@ -38,11 +38,11 @@
 						<div *ngIf="loginForm.controls['password'].hasError('required') && loginAttempt" style="color: red">Password is required</div>
 
 						<p class="float-left">
-							<a style="font-size: 14px; margin: 10px 0; display: inline-block; color: #fff; cursor: pointer;" (click)="toRegister()">Register Here</a>
+							<a style="font-size: 14px; margin: 10px 0; display: inline-block; color: black; cursor: pointer;" (click)="toRegister()">Register Here</a>
 						</p>
 
 						<p class="float-right">
-							<a routerLink="/" style="font-size: 14px; margin: 10px 0; display: inline-block; color: #fff">
+							<a routerLink="/forget-password" style="font-size: 14px; margin: 10px 0; display: inline-block; color: black">
 								Forgot your Password?
 							</a>
 						</p>
@@ -125,7 +125,7 @@
 
 				</div>
 				<p class="float-left">
-					<a style="font-size: 14px; margin: 10px 0; display: inline-block; color: #fff; cursor: pointer;" (click)="toLogin()">Login Here</a>
+					<a style="font-size: 14px; margin: 10px 0; display: inline-block; color: black; cursor: pointer;" (click)="toLogin()">Login Here</a>
 				</p>
 				<button type="submit" class="btn btn-block btn-accent" [disabled]="loading">
 					Register

@@ -18,7 +18,7 @@ declare var $: any;
 })
 export class ForherComponent implements OnInit {
   forher: any[];
-  t = localStorage;
+  t: any = localStorage;
   products: any[];
   categorys: any[];
   productTypes: any[];

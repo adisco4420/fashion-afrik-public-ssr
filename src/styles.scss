@@ -1,6 +1,5 @@
 @import '~bootstrap/scss/bootstrap', './sass/variables', './sass/main';
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
-
 @import url('https://fonts.googleapis.com/css?family=Muli');
 @import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
 // @import url('./assets/css/slick.css');
@@ -12,8 +11,8 @@
 // @import url('./assets/summernote/dist/summernote.css');
 @import url('https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.2/bootstrap-float-label.min.css');
 // @import url('./assets/toast/jquery.toast.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.min.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.skinModern.min.css');
+// @import url('https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.min.css');
+// @import url('https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.skinModern.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.8/css/intlTelInput.css');
 
 
@@ -466,12 +465,19 @@ body {
     transform: translate(-75px, -75px) scale(0.75) translate(75px, 75px);
   }
   .loader{
-    margin: 15% 40% !important;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin: auto;
 
 }
 // mobile style
-@media(max-width:500px){
-    .loader{
-        margin: 40% 20% !important;
-    }
-}
+// @media(max-width:500px){
+//     .loader{
+//         margin: 40% 20% !important;
+//     }
+// }

@@ -26,10 +26,10 @@
 						<span class="select-wrapper">
 							<select name="currency" id="currency_selector" (change)="changeCurrency($event)">
 								<option *ngFor="let currency of currencys" [selected]="t.getItem('currency') === currency.code" [value]="currency.code">{{currency.name}}</option>
-							</select>
-						</span>
+							</select> 
+						</span> 
 						<span class="" style="margin-right: 10px"> 
-						 {{product.sale_price / t.getItem('rate')  | currency:t.getItem('currency')}}
+						 {{product.sale_price / t.getItem('rate')  | currency:t.getItem('currency') }} 
 						</span>
 
 						<span class="" style="text-decoration: line-through; opacity: 0.2">
@@ -184,7 +184,7 @@
 
 			</div>
 			<div class="modal-body">
-				<form [formGroup]="customizeProductForm" (ngSubmit)="saveCustomRequest(customizeProductForm.value)" novalidate>
+				<form [formGroup]="customizeProductForm" (ngSubmit)="saveCustomRequest(customizeProductForm.value)" #f="ngForm" novalidate>
 					<div class="text-info alert alert-info" style="padding: 3px 20px">
 						<small>Enter values in inches</small>
 					</div>
@@ -197,8 +197,8 @@
 								<option *ngFor="let item of fabrics" [value]="item.slug">{{item.name}}</option>
 
 							</select>
-							<div *ngIf="customizeProductForm.controls['fabric'].hasError('required') && customSubmitAttempt" class="small form-error"
-							 style="color: red">Fabric is required</div>
+							<div *ngIf="customizeProductForm.controls['fabric'].hasError('required') && customSubmitAttempt " class="small form-error"
+							 style="color: red">*Fabric is required</div>
 						</div>
 
 						<div class="form-group col-sm-6">
@@ -210,7 +210,7 @@
 								<option value="green">green</option> -->
 							</select>
 							<div *ngIf="customizeProductForm.controls['color'].hasError('required') && customSubmitAttempt" class="small form-error"
-							 style="color: red">Color is required</div>
+							 style="color: red">*Color is required</div>
 						</div>
 					</div>
 
@@ -220,15 +220,15 @@
 							<input type="text" class="form-control" [formControl]="customizeProductForm.controls['collar']" (keypress)="numbersOnly($event)">
 
 							<div *ngIf="customizeProductForm.controls['collar'].hasError('required') && customSubmitAttempt" class="small form-error"
-							 style="color: red">Collar width is required</div>
+							 style="color: red">*Collar width is required</div>
 						</div>
 
 						<div class="form-group col-sm-6">
 							<label for="">Chest</label>
 							<input type="text" class="form-control" [formControl]="customizeProductForm.controls['chest']" (keypress)="numbersOnly($event)">
 
-							<div *ngIf="customizeProductForm.controls['chest'].hasError('required') && customSubmitAttempt" class="small form-error"
-							 style="color: red">Chest width is required</div>
+							<div *ngIf="customizeProductForm.controls['chest'].hasError('required') && customSubmitAttempt"  class="small form-error"
+							 style="color: red">*Chest width is required</div>
 						</div>
 					</div>
 
@@ -238,15 +238,15 @@
 							<input type="text" class="form-control" [formControl]="customizeProductForm.controls['waist']" (keypress)="numbersOnly($event)">
 
 							<div *ngIf="customizeProductForm.controls['waist'].hasError('required') && customSubmitAttempt" class="small form-error"
-							 style="color: red">Color is required</div>
+							 style="color: red">*Color is required</div>
 						</div>
 
 						<div class="form-group col-sm-6">
 							<label for="">Inside Legs</label>
 							<input type="text" class="form-control" [formControl]="customizeProductForm.controls['insideLegs']" (keypress)="numbersOnly($event)">
 
-							<div *ngIf="customizeProductForm.controls['insideLegs'].hasError('required') && customSubmitAttempt" class="small form-error"
-							 style="color: red">Inside legs width is required</div>
+							<div *ngIf="customizeProductForm.controls['insideLegs'].hasError('required') && customSubmitAttempt " class="small form-error"
+							 style="color: red">*Inside legs width is required</div>
 						</div>
 					</div>
 
@@ -256,56 +256,66 @@
 							<input type="text" class="form-control" [formControl]="customizeProductForm.controls['upperBodyLength']" (keypress)="numbersOnly($event)">
 
 							<div *ngIf="customizeProductForm.controls['upperBodyLength'].hasError('required') && customSubmitAttempt" class="small form-error"
-							 style="color: red">Upper body length is required</div>
+							 style="color: red">*Upper body length is required</div>
 						</div>
 					</div>
 					<div class="row user-info" *ngIf="!customer">
 						<div class="col-sm-12">
 							<h5 class="boldest">User Details</h5>
 							<hr>
-						</div>
+						</div> 
 						
 						<div class="form-group col-sm-6">
 							<label for="fullName">Full Name</label>
 							<input type="text" class="form-control"  [formControl]="customizeProductForm.controls['fullName']" 
-									name="fullName" placeholder="enter your full name">
+									name="fullName" >
 
 							<div *ngIf="customizeProductForm.controls['fullName'].hasError('required') && customSubmitAttempt" class="small form-error"
-								style="color: red">Full Name is required</div>
+								style="color: red">*Full Name is required</div>
 						</div>
 						
 						<div class="form-group col-sm-6">
 								<label for="email">Email</label>
 								<input type="email" class="form-control"  [formControl]="customizeProductForm.controls['email']" 
-										name="email" placeholder="enter your email">
+										name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$">
 	
 								<div *ngIf="customizeProductForm.controls['email'].hasError('required') && customSubmitAttempt" class="small form-error"
-									style="color: red">Email is required</div>
+									style="color: red">*Email is required</div>
+									<div *ngIf="customizeProductForm.controls['email'].hasError('pattern')  " 
+										class="small form-error" style="color: red">
+										*Email is invalid. Format should be john@doe.com.</div>
 							</div>
 
 						<div class="form-group col-sm-6">
 								<label for="phone">Phone Number</label>
-								<input type="tel" class="form-control"  [formControl]="customizeProductForm.controls['phone']" 
-										name="phone" placeholder="enter your phone number">
+								<input type="text" class="form-control"  [formControl]="customizeProductForm.controls['phone']" 
+								name="phone"  pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$"
+								>
 	
 								<div *ngIf="customizeProductForm.controls['phone'].hasError('required') && customSubmitAttempt" class="small form-error"
-									style="color: red">Phone Number is required</div>
+									style="color: red">*Phone Number is required</div>
+									 <div *ngIf="customizeProductForm.controls['phone'].hasError('pattern')  " 
+										class="small form-error" style="color: red">
+										Phone Number must be 11 digits</div>
+										<!--<div *ngIf="customizeProductForm.controls['phone'].hasError('maxlength')  && customSubmitAttempt" 
+										class="small form-error" style="color: red">
+										Phone Number must be 11 digits</div> -->
 							</div>
 
 						<div class="form-group col-sm-6">
 								<label for="address">Address</label>
 								<input type="text" class="form-control"  [formControl]="customizeProductForm.controls['address']" 
-										name="address" placeholder="enter your address">
+										name="address" >
 	
-								<div *ngIf="customizeProductForm.controls['address'].hasError('required') && customSubmitAttempt" class="small form-error"
-									style="color: red">Address is required</div>
+								<div *ngIf="customizeProductForm.controls['address'].hasError('required')&& customSubmitAttempt" class="small form-error"
+									style="color: red">*Address is required</div>
 							</div>
 
 					</div>
 
 					<div class="row ml-2">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">Save changes</button>
+						<button type="submit"  class="btn btn-primary">Save changes</button>
 					</div>
 
 

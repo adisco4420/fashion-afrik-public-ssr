@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     last_name: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    confirmPassword: '', 
     mobile: ''
   };
   customer: Object = {};
@@ -44,10 +44,9 @@ export class LoginComponent implements OnInit {
   constructor(fb: FormBuilder, private userSrv: UserService, private router: Router) {
     // let emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
     this.loginForm = fb.group({
-      'email': ['', Validators.required,],
+      'email': ['', Validators.required],
       'password': ['', Validators.required],
     });
-
     this.registerForm = fb.group({
       'first_name': ['', Validators.required],
       'last_name': ['', Validators.required],

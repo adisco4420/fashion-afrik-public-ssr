@@ -81,13 +81,13 @@
                 </div>
                 
                 <div class="row" *ngIf="forher">
-                         <div class="col-md-6" *ngFor="let item of forher">
+                         <div class="col-md-6" *ngFor="let item of forher"> 
                <div class="card" >
                  <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
                    <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
-                 </a>
-                 <div class="card-footer text-center">
-                    <span class="name">{{item.name}}</span> <br>
+                 </a> 
+                 <div class="card-footer text-center"> 
+                    <span class="name">{{item.name}}</span> <br>  
                    <span class="prices">  {{item.sale_price  / t.getItem('rate')  | currency:t.getItem('currency')}}
                      
                    </span>

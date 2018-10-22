@@ -18,7 +18,7 @@ declare var $: any;
 })
 export class ForhimComponent implements OnInit {
   forhim: any[];
-  t = localStorage;
+  t: any = localStorage;
   products: any[];
   categorys: any[];
   productTypes: any[];

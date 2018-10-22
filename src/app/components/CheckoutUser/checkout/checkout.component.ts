@@ -2,7 +2,8 @@ import { Component, OnInit, Output, EventEmitter, Input, AfterViewInit } from '@
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { OrderService } from '../../../services/order.service';
-import { UserService } from '../../../services/user.service'
+import { UserService } from '../../../services/user.service';
+
 
 import { CurrencyService } from '../../../services/currency.service';
 import { ExchangeRateService } from '../../../services/exchange-rate.service';
@@ -46,15 +47,14 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
   error: any;
 
   @Output() notifyLogin: EventEmitter<Boolean> = new EventEmitter<Boolean>();
-  
   constructor(fb: FormBuilder, private orderSrv: OrderService, private currencySrv: CurrencyService,
-    private rateSrv: ExchangeRateService, private userSrv: UserService, private router: Router) {
+    private rateSrv: ExchangeRateService, private userSrv: UserService, private router: Router,
+    ) {
 
     this.loginForm = fb.group({
       'email': ['', Validators.required],
       'password': ['', Validators.required],
     });
-    
     this.registerForm = fb.group({
       'first_name': ['', Validators.required],
       'last_name': ['', Validators.required],

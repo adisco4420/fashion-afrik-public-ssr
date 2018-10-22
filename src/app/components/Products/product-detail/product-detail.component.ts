@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 // import { EcomProductZoomModalImage, EcomProductZoomModalService } from '@plency/ecom-product-zoom-modal';
 import { Title, Meta, TransferState, makeStateKey } from '@angular/platform-browser';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
@@ -35,7 +35,7 @@ const STATE_KEY_NEWARRIVALS = makeStateKey('newArrival');
     ExchangeRateService]
 })
 export class ProductDetailComponent implements OnInit, AfterViewInit {
-  t = localStorage;
+  t: any = localStorage;
   currencys: any[];
   exchange_rates: any[];
   product: any = {
@@ -195,7 +195,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     this.fetchCurrencys();
     this.fetchExchangeRates();
     this.fetchFabrics();
-    this.getCustomer(); 
+    this.getCustomer();
      this.fetchColors();
     if (!localStorage.getItem('currency')) {
       localStorage.setItem('currency', 'GBP');
@@ -337,12 +337,12 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
         console.log(error);
       });
     }
-  };
+  }
 
-  saveCustomRequest(data) { 
+  saveCustomRequest(data) {
     this.customSubmitAttempt = true;
     if (this.customizeProductForm.valid) {
-    //  console.log(data);
+      console.log(data);
     }
   }
   fetchFabrics(){

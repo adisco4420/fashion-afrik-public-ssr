@@ -30,10 +30,9 @@
 
 							<div *ngIf="loginForm.controls['email'].hasError('pattern')  && loginAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
 						</div>
- 
 						<div class="form-group col-md-12">
 							<input type="password" class="form-control" name="password" [(ngModel)]="loginUser.password" [formControl]="loginForm.controls['password']"
-							 placeholder="Password">
+							 placeholder="Password"> 
 
 							<div *ngIf="loginForm.controls['password'].hasError('required') && loginAttempt" style="color: red">Password is required</div>
 

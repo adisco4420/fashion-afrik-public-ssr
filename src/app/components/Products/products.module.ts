@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // module
 import { SharedModule } from '../../shared/shared.module';
 
-import { ProductsRoutes } from './products.routing'
+import { ProductsRoutes } from './products.routing';
 // service
 import { ForherService } from './services/forher.service';
 import { ForhimService } from './services/forhim.service';
@@ -29,7 +29,6 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
-
 @NgModule({
     imports: [
       CommonModule,
@@ -37,7 +36,6 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
       SharedModule,
       FormsModule,
       ReactiveFormsModule,
-   
     ],
     declarations: [
     //  HeaderComponent
@@ -58,7 +56,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
         CurrencyService,
         ExchangeRateService,
         ProductTypesService,
-        CategoryService
+        CategoryService,
+        // ToastrService
     ]
   })
   export class ProductsModule { }
