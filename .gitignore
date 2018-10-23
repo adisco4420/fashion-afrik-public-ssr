@@ -3,8 +3,14 @@
 # compiled output
 /dist
 /dist-server
+/dist-browser
 /tmp
 /out-tsc
+
+# firebase setup
+/firebase.json
+/.firebase
+/.firebaserc
 
 # dependencies
 /node_modules
